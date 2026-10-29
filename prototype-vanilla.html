@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AL-SUUNAH | প্রিমিয়াম ইসলামিক ও লাইফস্টাইল ফ্যাশন</title>
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              50: '#fbf9f4',
+              100: '#f6f2e8',
+              200: '#ebdcc5',
+              300: '#dec29d',
+              400: '#c5a880',
+              500: '#a28359',
+              600: '#85663f',
+              700: '#694c2d',
+              800: '#523a23',
+              900: '#3d2b1a',
+            },
+            royal: {
+              900: '#0f141a',
+              800: '#171f28',
+              700: '#232e3b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#faf8f5] text-stone-800 antialiased selection:bg-amber-100 selection:text-amber-900">
+
+  <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
+  <div class="bg-stone-900 text-stone-200 text-xs py-2 px-4 border-b border-stone-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2 font-bangla">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>✨ সারা দেশে ক্যাশ অন ডেলিভারি | <strong>৳৩,০০০</strong> টাকার কেনাকাটায় ডেলিভারি <strong>সম্পূর্ণ ফ্রি!</strong></span>
+      </div>
+      <div class="flex items-center gap-4 text-stone-400 text-[11px] font-bangla">
+        <a href="tel:+8801700000000" class="hover:text-amber-300 transition-colors flex items-center gap-1">
+          <i data-lucide="phone-call" class="w-3 h-3"></i> হেল্পলাইন: 01700-000000
+        </a>
+        <span class="text-stone-700">|</span>
+        <button onclick="openSizeRecommender()" class="hover:text-amber-300 transition-colors flex items-center gap-1 text-[#c5a880]">
+          <i data-lucide="ruler" class="w-3 h-3"></i> সাইজ সহায়ক
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN NAVIGATION BAR ================= -->
+  <header class="sticky top-0 z-40 glass-header border-b border-stone-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Left: Mobile Menu & Brand Logo -->
+      <div class="flex items-center gap-4">
+        <button id="mobile-menu-btn" class="lg:hidden text-stone-800 hover:text-stone-900 p-2">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+        
+        <a href="#" class="flex items-center gap-2.5 group">
+          <div class="w-10 h-10 rounded-xl bg-stone-900 flex items-center justify-center text-[#c5a880] shadow-md group-hover:scale-105 transition-transform">
+            <span class="font-serif-luxury font-bold text-xl">س</span>
+          </div>
+          <div>
+            <span class="font-serif-luxury text-xl sm:text-2xl font-bold tracking-wider text-stone-900 block leading-none">
+              AL-SUUNAH
+            </span>
+            <span class="text-[9px] uppercase tracking-[0.25em] text-[#a28359] font-medium font-serif-luxury block mt-0.5">
+              Lifestyle & Elegance
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Center: Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-bangla font-medium text-stone-700">
+        <button onclick="document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="hover:text-[#a28359] transition-colors py-2">
+          সকল পণ্য
+        </button>
+        <button onclick="document.querySelector('[data-category-tab=\'panjabi\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="hover:text-[#a28359] transition-colors py-2">
+          পাঞ্জাবি
+        </button>
+        <button onclick="document.querySelector('[data-category-tab=\'jubbah\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="hover:text-[#a28359] transition-colors py-2">
+          জুব্বা / থোব
+        </button>
+        <button onclick="document.querySelector('[data-category-tab=\'attar\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="hover:text-[#a28359] transition-colors py-2 flex items-center gap-1 text-amber-700 font-semibold">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          খাঁটি আতর
+        </button>
+        <button onclick="document.querySelector('[data-category-tab=\'tshirt\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="hover:text-[#a28359] transition-colors py-2">
+          টি-শার্ট
+        </button>
+        <button onclick="openSizeRecommender()" class="hover:text-[#a28359] transition-colors py-2 flex items-center gap-1 text-stone-500">
+          <i data-lucide="ruler" class="w-3.5 h-3.5"></i>
+          সাইজ গাইড
+        </button>
+      </nav>
+
+      <!-- Right: Search, Wishlist, Cart -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Live Search Bar -->
+        <div class="relative hidden sm:block w-48 md:w-64">
+          <input 
+            type="text" 
+            id="search-input"
+            placeholder="পাঞ্জাবি, আতর বা টি-শার্ট খুঁজুন..." 
+            class="w-full bg-stone-100/90 text-xs font-bangla py-2.5 pl-9 pr-3 rounded-full border border-transparent focus:border-[#c5a880] focus:bg-white focus:outline-none transition-all placeholder:text-stone-400"
+          />
+          <i data-lucide="search" class="w-4 h-4 text-stone-400 absolute left-3 top-3"></i>
+        </div>
+
+        <!-- Wishlist Icon -->
+        <button 
+          onclick="showToast('উইশলিস্ট দেখতে পণ্যের হার্ট আইকন ক্লিক করুন', 'info')"
+          class="relative w-10 h-10 rounded-full hover:bg-stone-100 flex items-center justify-center text-stone-700 transition-colors"
+          title="উইশলিস্ট"
+        >
+          <i data-lucide="heart" class="w-5 h-5"></i>
+          <span id="wishlist-badge" class="hidden absolute top-1.5 right-1.5 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
+
+        <!-- Cart Drawer Trigger -->
+        <button 
+          id="cart-drawer-trigger"
+          class="relative bg-stone-900 hover:bg-stone-800 text-white py-2 px-3.5 sm:px-4 rounded-xl flex items-center gap-2 transition-all active:scale-95 shadow-sm"
+        >
+          <i data-lucide="shopping-bag" class="w-4 h-4 text-[#c5a880]"></i>
+          <span class="hidden sm:inline font-bangla text-xs font-semibold">ব্যাগ</span>
+          <span id="cart-badge" class="hidden bg-[#c5a880] text-stone-950 text-[11px] font-bold px-1.5 py-0.2 rounded-full min-w-[18px] text-center font-bangla">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION (HIGH LUXURY EDITORIAL) ================= -->
+  <section class="relative bg-stone-900 text-white overflow-hidden">
+    <!-- Background Texture / Image Overlay -->
+    <div class="absolute inset-0 opacity-25 mix-blend-overlay">
+      <img 
+        src="https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=1920&q=80" 
+        alt="Al Suunah Heritage" 
+        class="w-full h-full object-cover object-center filter blur-[1px]"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28">
+      <div class="max-w-2xl">
+        
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[#c5a880] text-xs font-bangla font-semibold mb-6">
+          <i data-lucide="crown" class="w-3.5 h-3.5"></i>
+          <span>নতুন সিজন কালেকশন ২০২৬ • সীমিত স্টক</span>
+        </div>
+
+        <h1 class="font-serif-luxury text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.15] mb-6">
+          আধুনিক আভিজাত্য ও <br/>
+          <span class="gold-gradient-text italic">ঐতিহ্যের স্নিগ্ধ প্রকাশ</span>
+        </h1>
+
+        <p class="font-bangla text-stone-300 text-sm sm:text-base leading-relaxed mb-8 max-w-xl">
+          বাংলাদেশের শীর্ষস্থানীয় হ্যান্ডলুম কারিগরদের বোনা প্রিমিয়াম পাঞ্জাবি, খাঁটি কম্বোডিয়ান উদ আতর এবং নিখুঁত অ্যারাবিয়ান জুব্বার এক অনন্য সম্ভার।
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4">
+          <button 
+            onclick="document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
+            class="bg-gradient-to-r from-[#c5a880] to-[#ab895e] hover:from-[#b8976c] hover:to-[#9c774d] text-stone-950 font-bangla font-bold text-sm py-3.5 px-7 rounded-xl shadow-lg transition-transform active:scale-95 flex items-center gap-2"
+          >
+            <span>কালেকশন এক্সপ্লোর করুন</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+
+          <button 
+            onclick="document.querySelector('[data-category-tab=\'attar\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
+            class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-bangla font-semibold text-sm py-3.5 px-6 rounded-xl transition-all flex items-center gap-2"
+          >
+            <i data-lucide="sparkles" class="w-4 h-4 text-[#c5a880]"></i>
+            <span>আতর ও উদ কালেকশন</span>
+          </button>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-white/10 text-stone-300 text-xs font-bangla">
+          <div class="flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-4 h-4 text-[#c5a880]"></i>
+            <span>১০০% খাঁটি ফেব্রিক</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="truck" class="w-4 h-4 text-[#c5a880]"></i>
+            <span>সারা দেশে ক্যাশ অন ডেলিভারি</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="refresh-cw" class="w-4 h-4 text-[#c5a880]"></i>
+            <span>৭ দিনের সাইজ এক্সচেঞ্জ</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-[#c5a880]"></i>
+            <span>অ্যালকোহল-মুক্ত বিশুদ্ধতা</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CURATED CATEGORIES ================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <span class="text-xs uppercase tracking-widest text-[#a28359] font-semibold font-serif-luxury block mb-1">Categories</span>
+        <h2 class="text-2xl sm:text-3xl font-bold font-bangla text-stone-900">পছন্দের ক্যাটাগরি বেছে নিন</h2>
+      </div>
+      <span class="text-xs text-stone-500 font-bangla hidden sm:block">প্রিমিয়াম কালেকশন ২০২৬</span>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+      
+      <!-- Panjabi -->
+      <div 
+        onclick="document.querySelector('[data-category-tab=\'panjabi\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
+        class="group relative rounded-2xl overflow-hidden aspect-[3/4] cursor-pointer shadow-sm border border-stone-200/80"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=600&q=80" 
+          alt="পাঞ্জাবি" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 sm:p-5 text-white">
+          <span class="text-[11px] text-[#c5a880] font-serif-luxury tracking-wider uppercase font-semibold">Collection</span>
+          <h3 class="text-base sm:text-lg font-bold font-bangla">পাঞ্জাবি ও কাবলি</h3>
+          <p class="text-xs text-stone-300 font-bangla opacity-90 mt-0.5">জ্যাকোয়ার্ড, সুতি ও সিল্ক</p>
+        </div>
+      </div>
+
+      <!-- Jubbah -->
+      <div 
+        onclick="document.querySelector('[data-category-tab=\'jubbah\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
+        class="group relative rounded-2xl overflow-hidden aspect-[3/4] cursor-pointer shadow-sm border border-stone-200/80"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1564557287817-3785e38ec1f5?auto=format&fit=crop&w=600&q=80" 
+          alt="জুব্বা" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 sm:p-5 text-white">
+          <span class="text-[11px] text-[#c5a880] font-serif-luxury tracking-wider uppercase font-semibold">Luxury</span>
+          <h3 class="text-base sm:text-lg font-bold font-bangla">অ্যারাবিয়ান জুব্বা</h3>
+          <p class="text-xs text-stone-300 font-bangla opacity-90 mt-0.5">এমিরেটস ও মরোক্কান স্টাইল</p>
+        </div>
+      </div>
+
+      <!-- Atar -->
+      <div 
+        onclick="document.querySelector('[data-category-tab=\'attar\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
+        class="group relative rounded-2xl overflow-hidden aspect-[3/4] cursor-pointer shadow-sm border border-stone-200/80"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80" 
+          alt="খাঁটি আতর" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 sm:p-5 text-white">
+          <span class="text-[11px] text-[#c5a880] font-serif-luxury tracking-wider uppercase font-semibold">Artisanal</span>
+          <h3 class="text-base sm:text-lg font-bold font-bangla">খাঁটি আতর ও উদ</h3>
+          <p class="text-xs text-stone-300 font-bangla opacity-90 mt-0.5">দেহন আল উদ ও হোয়াইট মাস্ক</p>
+        </div>
+      </div>
+
+      <!-- T-shirt -->
+      <div 
+        onclick="document.querySelector('[data-category-tab=\'tshirt\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
+        class="group relative rounded-2xl overflow-hidden aspect-[3/4] cursor-pointer shadow-sm border border-stone-200/80"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" 
+          alt="টি-শার্ট" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 sm:p-5 text-white">
+          <span class="text-[11px] text-[#c5a880] font-serif-luxury tracking-wider uppercase font-semibold">Minimalist</span>
+          <h3 class="text-base sm:text-lg font-bold font-bangla">মিনিমাল টি-শার্ট</h3>
+          <p class="text-xs text-stone-300 font-bangla opacity-90 mt-0.5">সবর ড্রপ-শোল্ডার ও সুপীমা</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= PRODUCT CATALOG & FILTERS ================= -->
+  <section id="catalog-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 scroll-mt-24">
+    
+    <!-- Controls Bar -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-stone-200">
+      
+      <!-- Category Filter Tabs -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none font-bangla text-xs">
+        <button data-category-tab="all" class="bg-stone-900 text-white font-semibold py-2 px-4 rounded-xl shadow-md whitespace-nowrap transition-all">
+          সবগুলো (All)
+        </button>
+        <button data-category-tab="panjabi" class="bg-white text-stone-700 border border-stone-200 font-medium py-2 px-4 rounded-xl hover:border-stone-400 whitespace-nowrap transition-all">
+          পাঞ্জাবি (Panjabi)
+        </button>
+        <button data-category-tab="jubbah" class="bg-white text-stone-700 border border-stone-200 font-medium py-2 px-4 rounded-xl hover:border-stone-400 whitespace-nowrap transition-all">
+          জুব্বা (Jubbah)
+        </button>
+        <button data-category-tab="attar" class="bg-white text-stone-700 border border-stone-200 font-medium py-2 px-4 rounded-xl hover:border-stone-400 whitespace-nowrap transition-all flex items-center gap-1.5">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-600"></i>
+          আতর (Attar)
+        </button>
+        <button data-category-tab="tshirt" class="bg-white text-stone-700 border border-stone-200 font-medium py-2 px-4 rounded-xl hover:border-stone-400 whitespace-nowrap transition-all">
+          টি-শার্ট (T-Shirt)
+        </button>
+      </div>
+
+      <!-- Sort & Filter Dropdown -->
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-stone-500 font-bangla hidden sm:inline">সর্ট করুন:</span>
+        <select 
+          id="sort-select"
+          class="bg-white border border-stone-200 text-stone-800 text-xs font-bangla py-2 px-3 rounded-xl focus:outline-none focus:border-[#c5a880] shadow-sm cursor-pointer"
+        >
+          <option value="popular">জনপ্রিয়তা অনুযায়ী</option>
+          <option value="low-high">দাম: কম থেকে বেশি</option>
+          <option value="high-low">দাম: বেশি থেকে কম</option>
+          <option value="rating">সেরা রেটিং</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- Products Grid (Rendered dynamically by app.js) -->
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
+      <!-- Injected by JavaScript -->
+    </div>
+
+  </section>
+
+  <!-- ================= SHOP THE LOOK / JUMU'AH BUNDLE ================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden shadow-xl border border-stone-700">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        
+        <div class="lg:col-span-7">
+          <span class="inline-block bg-[#c5a880] text-stone-950 font-bold text-xs uppercase px-3 py-1 rounded-full font-bangla mb-4">
+            🔥 স্পেশাল জুমু'আ অফার • বান্ডেল সেভ
+          </span>
+          <h2 class="font-serif-luxury text-2xl sm:text-4xl font-bold mb-3">
+            জুমু'আ সুন্নাহ লাক্সারি কম্বো
+          </h2>
+          <p class="font-bangla text-stone-300 text-sm leading-relaxed mb-6">
+            একটি পূর্ণাঙ্গ সেট: জ্যাকোয়ার্ড প্রিমিয়াম হোয়াইট পাঞ্জাবি + নিখুঁত সুতি পায়জামা + ৬মিলি দেহন আল উদ কাম্বোডি আতর এক সাথে কিনলে পাচ্ছেন তাৎক্ষণিক <strong>৳১,৩০০ টাকা ছাড়!</strong>
+          </p>
+
+          <div class="space-y-2 mb-6 text-xs font-bangla text-stone-200">
+            <div class="flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+              <span>রয়্যাল অ্যারাবিয়ান জ্যাকোয়ার্ড পাঞ্জাবি (আইভরি হোয়াইট)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+              <span>প্রিমিয়াম ফাইন কটন ট্রাউজার / পায়জামা</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+              <span>দেহন আল উদ কাম্বোডি খাঁটি আতর (৬মিলি প্রিমিয়াম উডেন বক্স)</span>
+            </div>
+          </div>
+
+          <div class="flex items-baseline gap-4 mb-6">
+            <span class="text-3xl font-bold text-[#c5a880] font-bangla">৳৫,২০০</span>
+            <span class="text-lg text-stone-400 line-through font-bangla">৳৬,৫০০</span>
+            <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs px-2.5 py-1 rounded-lg font-bangla">
+              সাশ্রয় ৳১,৩০০
+            </span>
+          </div>
+
+          <button 
+            onclick="quickAddToCart('pj-01'); quickAddToCart('at-01'); showToast('জুমু\'আ বান্ডেল কার্টে যুক্ত করা হয়েছে!', 'success');"
+            class="bg-gradient-to-r from-[#c5a880] to-[#ab895e] hover:from-[#b8976c] hover:to-[#9c774d] text-stone-950 font-bangla font-bold text-sm py-3.5 px-8 rounded-xl shadow-lg transition-transform active:scale-95 flex items-center gap-2"
+          >
+            <i data-lucide="gift" class="w-4 h-4"></i>
+            <span>১-ক্লিকে পুরো বান্ডেল অর্ডার করুন</span>
+          </button>
+        </div>
+
+        <div class="lg:col-span-5 relative">
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl border border-white/10">
+            <img 
+              src="https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=800&q=80" 
+              alt="Jumuah Bundle" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CRAFTSMANSHIP & VALUES ================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-amber-50 text-[#a28359] flex items-center justify-center flex-shrink-0">
+          <i data-lucide="scissors" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="font-bangla font-bold text-stone-900 text-base mb-1">কারিগরদের নিখুঁত সেলাই</h3>
+          <p class="text-xs text-stone-500 font-bangla leading-relaxed">
+            প্রতিটি পাঞ্জাবি এবং জুব্বা তৈরি হয় উচ্চমানের মেশিনারিজ ও দক্ষ মাস্টার টেইলরদের প্রত্যক্ষ তত্ত্বাবধানে।
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-amber-50 text-[#a28359] flex items-center justify-center flex-shrink-0">
+          <i data-lucide="droplet" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="font-bangla font-bold text-stone-900 text-base mb-1">শতভাগ বিশুদ্ধ ও ন্যাচারাল আতর</h3>
+          <p class="text-xs text-stone-500 font-bangla leading-relaxed">
+            কোনো কৃত্রিম অ্যালকোহল বা সিন্থেটিক রাসায়নিক ছাড়া দীর্ঘস্থায়ী প্রাকৃতিক এসেন্স সমৃদ্ধ।
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex items-start gap-4">
+        <div class="w-12 h-12 rounded-xl bg-amber-50 text-[#a28359] flex items-center justify-center flex-shrink-0">
+          <i data-lucide="truck" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="font-bangla font-bold text-stone-900 text-base mb-1">দ্রুততম হোম ডেলিভারি</h3>
+          <p class="text-xs text-stone-500 font-bangla leading-relaxed">
+            ঢাকার ভিতরে ২৪-৪৮ ঘণ্টা এবং সারা বাংলাদেশের যেকোনো প্রান্তে ৭২ ঘণ্টার মধ্যে ডেলিভারি।
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CUSTOMER REVIEWS ================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="text-center max-w-xl mx-auto mb-10">
+      <span class="text-xs uppercase tracking-widest text-[#a28359] font-semibold font-serif-luxury block mb-1">Customer Love</span>
+      <h2 class="text-2xl sm:text-3xl font-bold font-bangla text-stone-900">সম্মানিত গ্রাহকদের মতামত</h2>
+      <p class="text-xs text-stone-500 font-bangla mt-2">আমাদের পণ্য ও সেবায় সন্তুষ্ট সারা দেশের হাজারো ক্রেতা</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-1 text-amber-400 mb-3">
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+          </div>
+          <p class="text-stone-600 text-xs font-bangla leading-relaxed mb-4">
+            "রয়্যাল জ্যাকোয়ার্ড সাদা পাঞ্জাবিটা নিয়েছিলাম। কাপড় আর ফিনিশিং অসম্ভব সুন্দর! আড়ংয়ের প্রিমিয়াম কালেকশনের চেয়ে কোনো অংশে কম না, অথচ দামে অনেক সাশ্রয়ী।"
+          </p>
+        </div>
+        <div class="flex items-center gap-3 pt-3 border-t border-stone-100">
+          <div class="w-9 h-9 rounded-full bg-stone-900 text-[#c5a880] flex items-center justify-center font-bold text-xs">
+            TA
+          </div>
+          <div>
+            <h4 class="font-bangla font-semibold text-stone-900 text-xs">তানভীর আহমেদ</h4>
+            <span class="text-[10px] text-emerald-600 font-bangla flex items-center gap-1">
+              <i data-lucide="check-circle" class="w-3 h-3"></i> ভেরিফাইড বায়ার (ধানমন্ডি, ঢাকা)
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-1 text-amber-400 mb-3">
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+          </div>
+          <p class="text-stone-600 text-xs font-bangla leading-relaxed mb-4">
+            "দেহন আল উদ আতরের সুবাসটা এক কথায় অসাধারণ। সকালে পাঞ্জাবিতে দিলে রাত পর্যন্ত মিষ্টি স্মোকি ঘ্রাণ থাকে। গিফট বক্সটাও খুব রাজকীয় ছিল।"
+          </p>
+        </div>
+        <div class="flex items-center gap-3 pt-3 border-t border-stone-100">
+          <div class="w-9 h-9 rounded-full bg-stone-900 text-[#c5a880] flex items-center justify-center font-bold text-xs">
+            MR
+          </div>
+          <div>
+            <h4 class="font-bangla font-semibold text-stone-900 text-xs">মাহমুদুর রহমান</h4>
+            <span class="text-[10px] text-emerald-600 font-bangla flex items-center gap-1">
+              <i data-lucide="check-circle" class="w-3 h-3"></i> ভেরিফাইড বায়ার (চট্টগ্রাম)
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-1 text-amber-400 mb-3">
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+          </div>
+          <p class="text-stone-600 text-xs font-bangla leading-relaxed mb-4">
+            "এমিরেটস জুব্বার কাটিং এবং সাইজ গাইডটা দারুণ কাজ করেছে। ৫'৮" হাইটে ৫৪ সাইজ একদম পারফেক্ট হয়েছে। ডেলিভারিও মাত্র ২ দিনে পেয়েছি।"
+          </p>
+        </div>
+        <div class="flex items-center gap-3 pt-3 border-t border-stone-100">
+          <div class="w-9 h-9 rounded-full bg-stone-900 text-[#c5a880] flex items-center justify-center font-bold text-xs">
+            SH
+          </div>
+          <div>
+            <h4 class="font-bangla font-semibold text-stone-900 text-xs">সাইফুল হাসান</h4>
+            <span class="text-[10px] text-emerald-600 font-bangla flex items-center gap-1">
+              <i data-lucide="check-circle" class="w-3 h-3"></i> ভেরিফাইড বায়ার (সিলেট)
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-stone-900 text-stone-300 pt-16 pb-8 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-stone-800">
+        
+        <!-- Brand Info -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center gap-2.5 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-stone-800 flex items-center justify-center text-[#c5a880] border border-stone-700">
+              <span class="font-serif-luxury font-bold text-xl">س</span>
+            </div>
+            <div>
+              <span class="font-serif-luxury text-xl font-bold tracking-wider text-white">
+                AL-SUUNAH
+              </span>
+              <span class="text-[9px] uppercase tracking-[0.25em] text-[#c5a880] block">
+                Lifestyle & Elegance
+              </span>
+            </div>
+          </div>
+          <p class="text-xs text-stone-400 font-bangla leading-relaxed mb-6 max-w-sm">
+            আল-সুন্নাহ একটি রুচিশীল ও প্রিমিয়াম লাইফস্টাইল ব্র্যান্ড। বিশুদ্ধ সুন্নাহর অনুপ্রেরণায় আধুনিক ফ্যাশনের মেলবন্ধন ঘটিয়ে আমরা তৈরি করি মার্জিত পোশাক ও খাঁটি সুবাস।
+          </p>
+          <div class="flex items-center gap-3 text-stone-400">
+            <a href="#" class="w-8 h-8 rounded-full bg-stone-800 hover:bg-stone-700 flex items-center justify-center hover:text-white transition-colors">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-stone-800 hover:bg-stone-700 flex items-center justify-center hover:text-white transition-colors">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-stone-800 hover:bg-stone-700 flex items-center justify-center hover:text-white transition-colors">
+              <i data-lucide="youtube" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links 1 -->
+        <div>
+          <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4 font-serif-luxury">কলেকশন</h4>
+          <ul class="space-y-2 text-xs font-bangla text-stone-400">
+            <li><a href="#" class="hover:text-[#c5a880] transition-colors">পাঞ্জাবি কালেকশন</a></li>
+            <li><a href="#" class="hover:text-[#c5a880] transition-colors">কাবলি সেট</a></li>
+            <li><a href="#" class="hover:text-[#c5a880] transition-colors">এমিরেটস জুব্বা</a></li>
+            <li><a href="#" class="hover:text-[#c5a880] transition-colors">খাঁটি আতর ও উদ</a></li>
+            <li><a href="#" class="hover:text-[#c5a880] transition-colors">মিনিমাল টি-শার্ট</a></li>
+          </ul>
+        </div>
+
+        <!-- Links 2 -->
+        <div>
+          <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4 font-serif-luxury">গ্রাহক সেবা</h4>
+          <ul class="space-y-2 text-xs font-bangla text-stone-400">
+            <li><a href="#" onclick="openSizeRecommender()" class="hover:text-[#c5a880] transition-colors">সাইজ গাইড</a></li>
+            <li><a href="#" class="hover:text-[#c5a880] transition-colors">অর্ডার ট্র্যাকিং</a></li>
+            <li><a href="#" class="hover:text-[#c5a880] transition-colors">রিটার্ন ও এক্সচেঞ্জ পলিসি</a></li>
+            <li><a href="#" class="hover:text-[#c5a880] transition-colors">ডেলিভারি সংক্রান্ত তথ্য</a></li>
+            <li><a href="#" class="hover:text-[#c5a880] transition-colors">প্রাইভেসি পলিসি</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4 font-serif-luxury">যোগাযোগ</h4>
+          <ul class="space-y-3 text-xs font-bangla text-stone-400">
+            <li class="flex items-start gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-[#c5a880] flex-shrink-0 mt-0.5"></i>
+              <span>রোড #১১, বনানী, ঢাকা-১২১৩, বাংলাদেশ</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-[#c5a880] flex-shrink-0"></i>
+              <span>+৮৮০ ১৭০০ ০০০০০০</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4 text-[#c5a880] flex-shrink-0"></i>
+              <span>support@alsuunah.com</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bangla text-stone-500">
+        <p>© ২০২৬ AL-SUUNAH Lifestyle. সর্বস্বত্ব সংরক্ষিত।</p>
+        <div class="flex items-center gap-3 text-stone-400">
+          <span>নিরাপদ পেমেন্ট মেথড:</span>
+          <span class="font-bold text-white bg-stone-800 px-2 py-0.5 rounded text-[11px]">bKash</span>
+          <span class="font-bold text-white bg-stone-800 px-2 py-0.5 rounded text-[11px]">Nagad</span>
+          <span class="font-bold text-white bg-stone-800 px-2 py-0.5 rounded text-[11px]">Cash on Delivery</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= MOBILE NAVIGATION DRAWER ================= -->
+  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside 
+    id="mobile-menu-drawer" 
+    class="fixed top-0 left-0 h-full w-full max-w-xs bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between"
+  >
+    <div class="p-5 border-b border-stone-200">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-stone-900 flex items-center justify-center text-[#c5a880]">
+            <span class="font-serif-luxury font-bold text-base">س</span>
+          </div>
+          <span class="font-serif-luxury text-lg font-bold text-stone-900">AL-SUUNAH</span>
+        </div>
+        <button id="mobile-menu-close" class="p-2 text-stone-400 hover:text-stone-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="flex-1 overflow-y-auto p-5 font-bangla space-y-4 text-sm">
+      <button onclick="closeMobileMenu(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="w-full text-left font-semibold text-stone-800 hover:text-[#a28359] py-2 border-b border-stone-100 flex items-center justify-between">
+        <span>সকল পণ্য</span>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+      </button>
+      <button onclick="closeMobileMenu(); document.querySelector('[data-category-tab=\'panjabi\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="w-full text-left font-semibold text-stone-800 hover:text-[#a28359] py-2 border-b border-stone-100 flex items-center justify-between">
+        <span>পাঞ্জাবি কালেকশন</span>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+      </button>
+      <button onclick="closeMobileMenu(); document.querySelector('[data-category-tab=\'jubbah\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="w-full text-left font-semibold text-stone-800 hover:text-[#a28359] py-2 border-b border-stone-100 flex items-center justify-between">
+        <span>অ্যারাবিয়ান জুব্বা</span>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+      </button>
+      <button onclick="closeMobileMenu(); document.querySelector('[data-category-tab=\'attar\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="w-full text-left font-semibold text-amber-700 hover:text-[#a28359] py-2 border-b border-stone-100 flex items-center justify-between">
+        <span class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4"></i> খাঁটি আতর ও উদ</span>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+      </button>
+      <button onclick="closeMobileMenu(); document.querySelector('[data-category-tab=\'tshirt\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="w-full text-left font-semibold text-stone-800 hover:text-[#a28359] py-2 border-b border-stone-100 flex items-center justify-between">
+        <span>মিনিমাল টি-শার্ট</span>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+      </button>
+      <button onclick="closeMobileMenu(); openSizeRecommender()" class="w-full text-left font-semibold text-stone-600 hover:text-[#a28359] py-2 flex items-center justify-between">
+        <span class="flex items-center gap-2"><i data-lucide="ruler" class="w-4 h-4"></i> স্মার্ট সাইজ সহায়ক</span>
+        <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
+      </button>
+    </div>
+
+    <div class="p-5 border-t border-stone-100 font-bangla text-xs text-stone-500 space-y-2">
+      <div class="flex items-center gap-2">
+        <i data-lucide="phone-call" class="w-4 h-4 text-[#c5a880]"></i>
+        <span>হেল্পলাইন: 01700-000000</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <i data-lucide="truck" class="w-4 h-4 text-[#c5a880]"></i>
+        <span>সারা দেশে ক্যাশ অন ডেলিভারি</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================= SLIDE-OUT CART DRAWER ================= -->
+  <div id="cart-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  
+  <aside 
+    id="cart-drawer" 
+    class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between"
+  >
+    <!-- Cart Header -->
+    <div class="p-4 sm:p-5 border-b border-stone-200">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2 font-bangla">
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-[#a28359]"></i>
+          <h3 class="font-bold text-stone-900 text-base">শপিং ব্যাগ</h3>
+        </div>
+        <button id="cart-close-btn" class="p-2 text-stone-400 hover:text-stone-700 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Free Shipping Progress Bar -->
+      <div class="mt-4 bg-amber-50 border border-amber-200/60 p-3 rounded-xl">
+        <p id="shipping-progress-text" class="text-xs font-bangla text-amber-950 mb-2">
+          আর মাত্র <strong>৳৩,০০০</strong> টাকার কেনাকাটা করলে <strong>ফ্রি ডেলিভারি!</strong>
+        </p>
+        <div class="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
+          <div id="shipping-progress-bar" class="bg-gradient-to-r from-amber-500 to-[#c5a880] h-full w-0 transition-all duration-500"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Body -->
+    <div class="flex-1 overflow-y-auto p-4 sm:p-5">
+      <!-- Empty State -->
+      <div id="cart-empty-state" class="py-16 text-center">
+        <div class="w-16 h-16 rounded-full bg-stone-100 flex items-center justify-center mx-auto text-stone-400 mb-3">
+          <i data-lucide="shopping-cart" class="w-8 h-8"></i>
+        </div>
+        <h4 class="font-bangla font-semibold text-stone-700 text-sm">আপনার ব্যাগ খালি</h4>
+        <p class="font-bangla text-xs text-stone-400 mt-1 mb-4">আমাদের কালেকশন থেকে পছন্দসই পণ্য যোগ করুন।</p>
+        <button 
+          onclick="closeCartDrawer(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
+          class="bg-stone-900 text-white font-bangla text-xs py-2 px-5 rounded-xl font-semibold"
+        >
+          কেনাকাটা শুরু করুন
+        </button>
+      </div>
+
+      <!-- Cart Items List Container -->
+      <div id="cart-items-container"></div>
+    </div>
+
+    <!-- Cart Footer & Checkout Action -->
+    <div id="cart-footer" class="p-4 sm:p-5 border-t border-stone-200 bg-stone-50 hidden">
+      <div class="flex items-center justify-between mb-2 font-bangla">
+        <span class="text-xs text-stone-600">সাব-টোটাল:</span>
+        <span id="cart-subtotal" class="text-lg font-bold text-stone-900 font-bangla">৳০</span>
+      </div>
+      <p class="text-[11px] text-stone-400 font-bangla mb-4">
+        * ডেলিভারি চার্জ চেকআউটের সময় যুক্ত হবে।
+      </p>
+
+      <button 
+        onclick="openQuickCheckoutModal()"
+        class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bangla text-sm font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95"
+      >
+        <i data-lucide="zap" class="w-4 h-4 text-[#c5a880]"></i>
+        <span>১-ক্লিকে দ্রুত চেকআউট করুন</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ================= PRODUCT DETAIL MODAL ================= -->
+  <div id="product-detail-modal" class="modal-root hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 z-10">
+      <button onclick="closeAllModals()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 p-2 z-20">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <div id="product-detail-modal-body">
+        <!-- Injected by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= INTERACTIVE SIZE RECOMMENDER MODAL ================= -->
+  <div id="size-guide-modal" class="modal-root hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl max-w-md w-full shadow-2xl p-6 sm:p-8 z-10">
+      <button onclick="closeAllModals()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-2 mb-2 text-[#a28359]">
+        <i data-lucide="ruler" class="w-5 h-5"></i>
+        <h3 class="font-bangla font-bold text-stone-900 text-lg">স্মার্ট সাইজ সহায়ক</h3>
+      </div>
+      <p class="text-xs text-stone-500 font-bangla mb-5">
+        আপনার উচ্চতা ও আনুমানিক ওজন দিলে আমাদের সিস্টেম আপনার জন্য সেরা ফিটিং সাইজ নির্ধারণ করে দেবে।
+      </p>
+
+      <div class="space-y-4 font-bangla text-xs">
+        <div>
+          <label class="block font-semibold text-stone-700 mb-1">উচ্চতা (ফুট ও ইঞ্চি):</label>
+          <div class="grid grid-cols-2 gap-2">
+            <select id="size-height-feet" class="bg-stone-50 border border-stone-200 rounded-xl p-2.5">
+              <option value="5">৫ ফুট</option>
+              <option value="6">৬ ফুট</option>
+            </select>
+            <select id="size-height-inches" class="bg-stone-50 border border-stone-200 rounded-xl p-2.5">
+              <option value="4">৪ ইঞ্চি</option>
+              <option value="5">৫ ইঞ্চি</option>
+              <option value="6">৬ ইঞ্চি</option>
+              <option value="7">৭ ইঞ্চি</option>
+              <option value="8" selected>৮ ইঞ্চি</option>
+              <option value="9">৯ ইঞ্চি</option>
+              <option value="10">১০ ইঞ্চি</option>
+              <option value="11">১১ ইঞ্চি</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-stone-700 mb-1">ওজন (কেজি):</label>
+          <input 
+            type="number" 
+            id="size-weight-kg" 
+            value="68" 
+            min="45" 
+            max="120"
+            class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-stone-800"
+          />
+        </div>
+
+        <button 
+          onclick="calculateRecommendedSize()"
+          class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bold py-3 rounded-xl transition-all shadow"
+        >
+          সাইজ চেক করুন
+        </button>
+
+        <div id="size-recommendation-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 1-CLICK FAST CHECKOUT MODAL ================= -->
+  <div id="checkout-modal" class="modal-root hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl max-w-lg w-full max-h-[95vh] overflow-y-auto shadow-2xl p-6 sm:p-8 z-10">
+      <button onclick="closeAllModals()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex items-center gap-2 mb-1 text-[#a28359]">
+        <i data-lucide="zap" class="w-5 h-5"></i>
+        <h3 class="font-bangla font-bold text-stone-900 text-lg">১-ক্লিক দ্রুত অর্ডার</h3>
+      </div>
+      <p class="text-xs text-stone-500 font-bangla mb-4">
+        কোনো পাসওয়ার্ড ছাড়াই শুধু ডেলিভারির তথ্য দিয়ে অর্ডার কনফার্ম করুন।
+      </p>
+
+      <!-- Order Summary Card -->
+      <div id="checkout-order-summary" class="bg-stone-50 border border-stone-200 p-3.5 rounded-2xl mb-4">
+        <!-- Rendered by app.js -->
+      </div>
+
+      <form onsubmit="confirmOrderSubmit(event)" class="space-y-3 font-bangla text-xs">
+        <div>
+          <label class="block font-semibold text-stone-700 mb-1">আপনার পূর্ণ নাম *</label>
+          <input 
+            type="text" 
+            id="order-name" 
+            required 
+            placeholder="উদা: আব্দুল্লাহ আল মামুন" 
+            class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 focus:border-[#c5a880] focus:bg-white focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label class="block font-semibold text-stone-700 mb-1">মোবাইল নম্বর (১১ ডিজিট) *</label>
+          <input 
+            type="tel" 
+            id="order-phone" 
+            required 
+            placeholder="01XXXXXXXXX" 
+            class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 focus:border-[#c5a880] focus:bg-white focus:outline-none font-mono"
+          />
+        </div>
+
+        <div>
+          <label class="block font-semibold text-stone-700 mb-1">সম্পূর্ণ ঠিকানা (বাসা/রোড, থানা, জেলা) *</label>
+          <textarea 
+            id="order-address" 
+            rows="2" 
+            required 
+            placeholder="উদা: বাড়ি #১২, রোড #০৫, ব্লক সি, বনশ্রী, ঢাকা" 
+            class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 focus:border-[#c5a880] focus:bg-white focus:outline-none"
+          ></textarea>
+        </div>
+
+        <!-- Delivery Area Selection -->
+        <div>
+          <label class="block font-semibold text-stone-700 mb-1.5">ডেলিভারি লোকেশন:</label>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="flex items-center gap-2 p-2.5 border border-stone-200 rounded-xl cursor-pointer hover:bg-stone-50">
+              <input type="radio" name="delivery-area" value="inside" checked onchange="updateDeliveryArea('inside')" class="text-stone-900 focus:ring-0">
+              <div>
+                <span class="font-bold text-stone-800 block">ঢাকার ভিতরে</span>
+                <span class="text-[10px] text-stone-500">চার্জ: ৳৭০</span>
+              </div>
+            </label>
+            <label class="flex items-center gap-2 p-2.5 border border-stone-200 rounded-xl cursor-pointer hover:bg-stone-50">
+              <input type="radio" name="delivery-area" value="outside" onchange="updateDeliveryArea('outside')" class="text-stone-900 focus:ring-0">
+              <div>
+                <span class="font-bold text-stone-800 block">ঢাকার বাইরে</span>
+                <span class="text-[10px] text-stone-500">চার্জ: ৳১৩০</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div>
+          <label class="block font-semibold text-stone-700 mb-1.5">পেমেন্ট মেথড:</label>
+          <div class="space-y-2">
+            <label class="flex items-center gap-2 p-2.5 border border-stone-300 bg-amber-50/50 rounded-xl cursor-pointer">
+              <input type="radio" name="payment-method" value="cod" checked class="text-stone-900 focus:ring-0">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-bold text-stone-900">ক্যাশ অন ডেলিভারি (পণ্য হাতে পেয়ে টাকা দিন)</span>
+                <i data-lucide="banknote" class="w-4 h-4 text-emerald-600"></i>
+              </div>
+            </label>
+            <label class="flex items-center gap-2 p-2.5 border border-stone-200 rounded-xl cursor-pointer hover:bg-stone-50">
+              <input type="radio" name="payment-method" value="bkash" class="text-stone-900 focus:ring-0">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-semibold text-stone-700">বিকাশ / নগদ (অনলাইন পেমেন্ট)</span>
+                <span class="text-[10px] bg-pink-100 text-pink-700 font-bold px-2 py-0.5 rounded">bKash</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <button 
+          type="submit"
+          class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bangla font-bold text-sm py-3.5 px-4 rounded-xl shadow-lg transition-transform active:scale-95 flex items-center justify-center gap-2 mt-2"
+        >
+          <i data-lucide="check-circle" class="w-4 h-4 text-[#c5a880]"></i>
+          <span>অর্ডার নিশ্চিত করুন</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= ORDER CONFIRMATION SUCCESS MODAL ================= -->
+  <div id="order-success-modal" class="modal-root hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative bg-white rounded-3xl max-w-md w-full shadow-2xl p-6 sm:p-8 z-10 text-center">
+      
+      <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 animate-bounce">
+        <i data-lucide="check" class="w-8 h-8"></i>
+      </div>
+
+      <h3 class="font-bangla font-bold text-stone-900 text-xl mb-1">
+        আলহামদুলিল্লাহ! আপনার অর্ডার সফল হয়েছে
+      </h3>
+      <p class="text-xs text-stone-500 font-bangla mb-5">
+        আমাদের প্রতিনিধি খুব শীঘ্রই কল করে অর্ডারটি ভেরিফাই করবেন এবং পার্সেল প্রস্তুত করা হবে।
+      </p>
+
+      <div id="success-order-details" class="mb-5">
+        <!-- Rendered by app.js -->
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <a 
+          href="https://wa.me/8801700000000" 
+          target="_blank"
+          class="bg-emerald-600 hover:bg-emerald-700 text-white font-bangla font-semibold text-xs py-3 px-4 rounded-xl flex items-center justify-center gap-2"
+        >
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>হোয়াটসঅ্যাপে দ্রুত আপডেট নিন</span>
+        </a>
+
+        <button 
+          onclick="closeAllModals()" 
+          class="bg-stone-100 hover:bg-stone-200 text-stone-800 font-bangla font-semibold text-xs py-2.5 px-4 rounded-xl"
+        >
+          আরও কেনাকাটা করুন
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+
+  <!-- Scripts -->
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

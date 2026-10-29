@@ -3,1003 +3,1714 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AL-SUUNAH | প্রিমিয়াম ইসলামিক ও লাইফস্টাইল ফ্যাশন</title>
+  <title>ABHA | THE GLOW OF NEW TRENDS</title>
   
-  <!-- Tailwind CSS via CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            gold: {
-              50: '#fbf9f4',
-              100: '#f6f2e8',
-              200: '#ebdcc5',
-              300: '#dec29d',
-              400: '#c5a880',
-              500: '#a28359',
-              600: '#85663f',
-              700: '#694c2d',
-              800: '#523a23',
-              900: '#3d2b1a',
-            },
-            royal: {
-              900: '#0f141a',
-              800: '#171f28',
-              700: '#232e3b'
-            }
-          }
-        }
+  
+  <!-- Google Fonts: Cormorant Garamond, Hind Siliguri, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- React 18 & Babel Standalone (Runs React directly in browser) -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-brand {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .font-bangla {
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+    @keyframes marqueeRTL {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
       }
     }
-  </script>
-
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
+    .animate-marquee-rtl {
+      animation: marqueeRTL 36s linear infinite;
+    }
+    .animate-marquee-rtl:hover {
+      animation-play-state: paused;
+    }
+  </style>
 </head>
-<body class="bg-[#faf8f5] text-stone-800 antialiased selection:bg-amber-100 selection:text-amber-900">
-
-  <!-- ================= TOP ANNOUNCEMENT BAR ================= -->
-  <div class="bg-stone-900 text-stone-200 text-xs py-2 px-4 border-b border-stone-800">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-      <div class="flex items-center gap-2 font-bangla">
-        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>✨ সারা দেশে ক্যাশ অন ডেলিভারি | <strong>৳৩,০০০</strong> টাকার কেনাকাটায় ডেলিভারি <strong>সম্পূর্ণ ফ্রি!</strong></span>
-      </div>
-      <div class="flex items-center gap-4 text-stone-400 text-[11px] font-bangla">
-        <a href="tel:+8801700000000" class="hover:text-amber-300 transition-colors flex items-center gap-1">
-          <i data-lucide="phone-call" class="w-3 h-3"></i> হেল্পলাইন: 01700-000000
-        </a>
-        <span class="text-stone-700">|</span>
-        <button onclick="openSizeRecommender()" class="hover:text-amber-300 transition-colors flex items-center gap-1 text-[#c5a880]">
-          <i data-lucide="ruler" class="w-3 h-3"></i> সাইজ সহায়ক
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= MAIN NAVIGATION BAR ================= -->
-  <header class="sticky top-0 z-40 glass-header border-b border-stone-200/80 transition-all">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-      
-      <!-- Left: Mobile Menu & Brand Logo -->
-      <div class="flex items-center gap-4">
-        <button id="mobile-menu-btn" class="lg:hidden text-stone-800 hover:text-stone-900 p-2">
-          <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
-        
-        <a href="#" class="flex items-center gap-2.5 group">
-          <div class="w-10 h-10 rounded-xl bg-stone-900 flex items-center justify-center text-[#c5a880] shadow-md group-hover:scale-105 transition-transform">
-            <span class="font-serif-luxury font-bold text-xl">س</span>
-          </div>
-          <div>
-            <span class="font-serif-luxury text-xl sm:text-2xl font-bold tracking-wider text-stone-900 block leading-none">
-              AL-SUUNAH
-            </span>
-            <span class="text-[9px] uppercase tracking-[0.25em] text-[#a28359] font-medium font-serif-luxury block mt-0.5">
-              Lifestyle & Elegance
-            </span>
-          </div>
-        </a>
-      </div>
-
-      <!-- Center: Navigation Links -->
-      <nav class="hidden lg:flex items-center gap-7 text-sm font-bangla font-medium text-stone-700">
-        <button onclick="document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="hover:text-[#a28359] transition-colors py-2">
-          সকল পণ্য
-        </button>
-        <button onclick="document.querySelector('[data-category-tab=\'panjabi\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="hover:text-[#a28359] transition-colors py-2">
-          পাঞ্জাবি
-        </button>
-        <button onclick="document.querySelector('[data-category-tab=\'jubbah\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="hover:text-[#a28359] transition-colors py-2">
-          জুব্বা / থোব
-        </button>
-        <button onclick="document.querySelector('[data-category-tab=\'attar\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="hover:text-[#a28359] transition-colors py-2 flex items-center gap-1 text-amber-700 font-semibold">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-          খাঁটি আতর
-        </button>
-        <button onclick="document.querySelector('[data-category-tab=\'tshirt\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="hover:text-[#a28359] transition-colors py-2">
-          টি-শার্ট
-        </button>
-        <button onclick="openSizeRecommender()" class="hover:text-[#a28359] transition-colors py-2 flex items-center gap-1 text-stone-500">
-          <i data-lucide="ruler" class="w-3.5 h-3.5"></i>
-          সাইজ গাইড
-        </button>
-      </nav>
-
-      <!-- Right: Search, Wishlist, Cart -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        <!-- Live Search Bar -->
-        <div class="relative hidden sm:block w-48 md:w-64">
-          <input 
-            type="text" 
-            id="search-input"
-            placeholder="পাঞ্জাবি, আতর বা টি-শার্ট খুঁজুন..." 
-            class="w-full bg-stone-100/90 text-xs font-bangla py-2.5 pl-9 pr-3 rounded-full border border-transparent focus:border-[#c5a880] focus:bg-white focus:outline-none transition-all placeholder:text-stone-400"
-          />
-          <i data-lucide="search" class="w-4 h-4 text-stone-400 absolute left-3 top-3"></i>
-        </div>
-
-        <!-- Wishlist Icon -->
-        <button 
-          onclick="showToast('উইশলিস্ট দেখতে পণ্যের হার্ট আইকন ক্লিক করুন', 'info')"
-          class="relative w-10 h-10 rounded-full hover:bg-stone-100 flex items-center justify-center text-stone-700 transition-colors"
-          title="উইশলিস্ট"
-        >
-          <i data-lucide="heart" class="w-5 h-5"></i>
-          <span id="wishlist-badge" class="hidden absolute top-1.5 right-1.5 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
-        </button>
-
-        <!-- Cart Drawer Trigger -->
-        <button 
-          id="cart-drawer-trigger"
-          class="relative bg-stone-900 hover:bg-stone-800 text-white py-2 px-3.5 sm:px-4 rounded-xl flex items-center gap-2 transition-all active:scale-95 shadow-sm"
-        >
-          <i data-lucide="shopping-bag" class="w-4 h-4 text-[#c5a880]"></i>
-          <span class="hidden sm:inline font-bangla text-xs font-semibold">ব্যাগ</span>
-          <span id="cart-badge" class="hidden bg-[#c5a880] text-stone-950 text-[11px] font-bold px-1.5 py-0.2 rounded-full min-w-[18px] text-center font-bangla">0</span>
-        </button>
-      </div>
-
-    </div>
-  </header>
-
-  <!-- ================= HERO SECTION (HIGH LUXURY EDITORIAL) ================= -->
-  <section class="relative bg-stone-900 text-white overflow-hidden">
-    <!-- Background Texture / Image Overlay -->
-    <div class="absolute inset-0 opacity-25 mix-blend-overlay">
-      <img 
-        src="https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=1920&q=80" 
-        alt="Al Suunah Heritage" 
-        class="w-full h-full object-cover object-center filter blur-[1px]"
-      />
-    </div>
-    
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28">
-      <div class="max-w-2xl">
-        
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[#c5a880] text-xs font-bangla font-semibold mb-6">
-          <i data-lucide="crown" class="w-3.5 h-3.5"></i>
-          <span>নতুন সিজন কালেকশন ২০২৬ • সীমিত স্টক</span>
-        </div>
-
-        <h1 class="font-serif-luxury text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.15] mb-6">
-          আধুনিক আভিজাত্য ও <br/>
-          <span class="gold-gradient-text italic">ঐতিহ্যের স্নিগ্ধ প্রকাশ</span>
-        </h1>
-
-        <p class="font-bangla text-stone-300 text-sm sm:text-base leading-relaxed mb-8 max-w-xl">
-          বাংলাদেশের শীর্ষস্থানীয় হ্যান্ডলুম কারিগরদের বোনা প্রিমিয়াম পাঞ্জাবি, খাঁটি কম্বোডিয়ান উদ আতর এবং নিখুঁত অ্যারাবিয়ান জুব্বার এক অনন্য সম্ভার।
-        </p>
-
-        <div class="flex flex-wrap items-center gap-4">
-          <button 
-            onclick="document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
-            class="bg-gradient-to-r from-[#c5a880] to-[#ab895e] hover:from-[#b8976c] hover:to-[#9c774d] text-stone-950 font-bangla font-bold text-sm py-3.5 px-7 rounded-xl shadow-lg transition-transform active:scale-95 flex items-center gap-2"
-          >
-            <span>কালেকশন এক্সপ্লোর করুন</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </button>
-
-          <button 
-            onclick="document.querySelector('[data-category-tab=\'attar\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
-            class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-bangla font-semibold text-sm py-3.5 px-6 rounded-xl transition-all flex items-center gap-2"
-          >
-            <i data-lucide="sparkles" class="w-4 h-4 text-[#c5a880]"></i>
-            <span>আতর ও উদ কালেকশন</span>
-          </button>
-        </div>
-
-        <!-- Trust Badges -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-white/10 text-stone-300 text-xs font-bangla">
-          <div class="flex items-center gap-2">
-            <i data-lucide="check-circle" class="w-4 h-4 text-[#c5a880]"></i>
-            <span>১০০% খাঁটি ফেব্রিক</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i data-lucide="truck" class="w-4 h-4 text-[#c5a880]"></i>
-            <span>সারা দেশে ক্যাশ অন ডেলিভারি</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i data-lucide="refresh-cw" class="w-4 h-4 text-[#c5a880]"></i>
-            <span>৭ দিনের সাইজ এক্সচেঞ্জ</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <i data-lucide="shield-check" class="w-4 h-4 text-[#c5a880]"></i>
-            <span>অ্যালকোহল-মুক্ত বিশুদ্ধতা</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CURATED CATEGORIES ================= -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-    <div class="flex items-end justify-between mb-8">
-      <div>
-        <span class="text-xs uppercase tracking-widest text-[#a28359] font-semibold font-serif-luxury block mb-1">Categories</span>
-        <h2 class="text-2xl sm:text-3xl font-bold font-bangla text-stone-900">পছন্দের ক্যাটাগরি বেছে নিন</h2>
-      </div>
-      <span class="text-xs text-stone-500 font-bangla hidden sm:block">প্রিমিয়াম কালেকশন ২০২৬</span>
-    </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-      
-      <!-- Panjabi -->
-      <div 
-        onclick="document.querySelector('[data-category-tab=\'panjabi\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
-        class="group relative rounded-2xl overflow-hidden aspect-[3/4] cursor-pointer shadow-sm border border-stone-200/80"
-      >
-        <img 
-          src="https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=600&q=80" 
-          alt="পাঞ্জাবি" 
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 sm:p-5 text-white">
-          <span class="text-[11px] text-[#c5a880] font-serif-luxury tracking-wider uppercase font-semibold">Collection</span>
-          <h3 class="text-base sm:text-lg font-bold font-bangla">পাঞ্জাবি ও কাবলি</h3>
-          <p class="text-xs text-stone-300 font-bangla opacity-90 mt-0.5">জ্যাকোয়ার্ড, সুতি ও সিল্ক</p>
-        </div>
-      </div>
-
-      <!-- Jubbah -->
-      <div 
-        onclick="document.querySelector('[data-category-tab=\'jubbah\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
-        class="group relative rounded-2xl overflow-hidden aspect-[3/4] cursor-pointer shadow-sm border border-stone-200/80"
-      >
-        <img 
-          src="https://images.unsplash.com/photo-1564557287817-3785e38ec1f5?auto=format&fit=crop&w=600&q=80" 
-          alt="জুব্বা" 
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 sm:p-5 text-white">
-          <span class="text-[11px] text-[#c5a880] font-serif-luxury tracking-wider uppercase font-semibold">Luxury</span>
-          <h3 class="text-base sm:text-lg font-bold font-bangla">অ্যারাবিয়ান জুব্বা</h3>
-          <p class="text-xs text-stone-300 font-bangla opacity-90 mt-0.5">এমিরেটস ও মরোক্কান স্টাইল</p>
-        </div>
-      </div>
-
-      <!-- Atar -->
-      <div 
-        onclick="document.querySelector('[data-category-tab=\'attar\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
-        class="group relative rounded-2xl overflow-hidden aspect-[3/4] cursor-pointer shadow-sm border border-stone-200/80"
-      >
-        <img 
-          src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80" 
-          alt="খাঁটি আতর" 
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 sm:p-5 text-white">
-          <span class="text-[11px] text-[#c5a880] font-serif-luxury tracking-wider uppercase font-semibold">Artisanal</span>
-          <h3 class="text-base sm:text-lg font-bold font-bangla">খাঁটি আতর ও উদ</h3>
-          <p class="text-xs text-stone-300 font-bangla opacity-90 mt-0.5">দেহন আল উদ ও হোয়াইট মাস্ক</p>
-        </div>
-      </div>
-
-      <!-- T-shirt -->
-      <div 
-        onclick="document.querySelector('[data-category-tab=\'tshirt\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
-        class="group relative rounded-2xl overflow-hidden aspect-[3/4] cursor-pointer shadow-sm border border-stone-200/80"
-      >
-        <img 
-          src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" 
-          alt="টি-শার্ট" 
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 sm:p-5 text-white">
-          <span class="text-[11px] text-[#c5a880] font-serif-luxury tracking-wider uppercase font-semibold">Minimalist</span>
-          <h3 class="text-base sm:text-lg font-bold font-bangla">মিনিমাল টি-শার্ট</h3>
-          <p class="text-xs text-stone-300 font-bangla opacity-90 mt-0.5">সবর ড্রপ-শোল্ডার ও সুপীমা</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= PRODUCT CATALOG & FILTERS ================= -->
-  <section id="catalog-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 scroll-mt-24">
-    
-    <!-- Controls Bar -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-stone-200">
-      
-      <!-- Category Filter Tabs -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none font-bangla text-xs">
-        <button data-category-tab="all" class="bg-stone-900 text-white font-semibold py-2 px-4 rounded-xl shadow-md whitespace-nowrap transition-all">
-          সবগুলো (All)
-        </button>
-        <button data-category-tab="panjabi" class="bg-white text-stone-700 border border-stone-200 font-medium py-2 px-4 rounded-xl hover:border-stone-400 whitespace-nowrap transition-all">
-          পাঞ্জাবি (Panjabi)
-        </button>
-        <button data-category-tab="jubbah" class="bg-white text-stone-700 border border-stone-200 font-medium py-2 px-4 rounded-xl hover:border-stone-400 whitespace-nowrap transition-all">
-          জুব্বা (Jubbah)
-        </button>
-        <button data-category-tab="attar" class="bg-white text-stone-700 border border-stone-200 font-medium py-2 px-4 rounded-xl hover:border-stone-400 whitespace-nowrap transition-all flex items-center gap-1.5">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-600"></i>
-          আতর (Attar)
-        </button>
-        <button data-category-tab="tshirt" class="bg-white text-stone-700 border border-stone-200 font-medium py-2 px-4 rounded-xl hover:border-stone-400 whitespace-nowrap transition-all">
-          টি-শার্ট (T-Shirt)
-        </button>
-      </div>
-
-      <!-- Sort & Filter Dropdown -->
-      <div class="flex items-center gap-3">
-        <span class="text-xs text-stone-500 font-bangla hidden sm:inline">সর্ট করুন:</span>
-        <select 
-          id="sort-select"
-          class="bg-white border border-stone-200 text-stone-800 text-xs font-bangla py-2 px-3 rounded-xl focus:outline-none focus:border-[#c5a880] shadow-sm cursor-pointer"
-        >
-          <option value="popular">জনপ্রিয়তা অনুযায়ী</option>
-          <option value="low-high">দাম: কম থেকে বেশি</option>
-          <option value="high-low">দাম: বেশি থেকে কম</option>
-          <option value="rating">সেরা রেটিং</option>
-        </select>
-      </div>
-
-    </div>
-
-    <!-- Products Grid (Rendered dynamically by app.js) -->
-    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
-      <!-- Injected by JavaScript -->
-    </div>
-
-  </section>
-
-  <!-- ================= SHOP THE LOOK / JUMU'AH BUNDLE ================= -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden shadow-xl border border-stone-700">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-        
-        <div class="lg:col-span-7">
-          <span class="inline-block bg-[#c5a880] text-stone-950 font-bold text-xs uppercase px-3 py-1 rounded-full font-bangla mb-4">
-            🔥 স্পেশাল জুমু'আ অফার • বান্ডেল সেভ
-          </span>
-          <h2 class="font-serif-luxury text-2xl sm:text-4xl font-bold mb-3">
-            জুমু'আ সুন্নাহ লাক্সারি কম্বো
-          </h2>
-          <p class="font-bangla text-stone-300 text-sm leading-relaxed mb-6">
-            একটি পূর্ণাঙ্গ সেট: জ্যাকোয়ার্ড প্রিমিয়াম হোয়াইট পাঞ্জাবি + নিখুঁত সুতি পায়জামা + ৬মিলি দেহন আল উদ কাম্বোডি আতর এক সাথে কিনলে পাচ্ছেন তাৎক্ষণিক <strong>৳১,৩০০ টাকা ছাড়!</strong>
-          </p>
-
-          <div class="space-y-2 mb-6 text-xs font-bangla text-stone-200">
-            <div class="flex items-center gap-2">
-              <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
-              <span>রয়্যাল অ্যারাবিয়ান জ্যাকোয়ার্ড পাঞ্জাবি (আইভরি হোয়াইট)</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
-              <span>প্রিমিয়াম ফাইন কটন ট্রাউজার / পায়জামা</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
-              <span>দেহন আল উদ কাম্বোডি খাঁটি আতর (৬মিলি প্রিমিয়াম উডেন বক্স)</span>
-            </div>
-          </div>
-
-          <div class="flex items-baseline gap-4 mb-6">
-            <span class="text-3xl font-bold text-[#c5a880] font-bangla">৳৫,২০০</span>
-            <span class="text-lg text-stone-400 line-through font-bangla">৳৬,৫০০</span>
-            <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs px-2.5 py-1 rounded-lg font-bangla">
-              সাশ্রয় ৳১,৩০০
-            </span>
-          </div>
-
-          <button 
-            onclick="quickAddToCart('pj-01'); quickAddToCart('at-01'); showToast('জুমু\'আ বান্ডেল কার্টে যুক্ত করা হয়েছে!', 'success');"
-            class="bg-gradient-to-r from-[#c5a880] to-[#ab895e] hover:from-[#b8976c] hover:to-[#9c774d] text-stone-950 font-bangla font-bold text-sm py-3.5 px-8 rounded-xl shadow-lg transition-transform active:scale-95 flex items-center gap-2"
-          >
-            <i data-lucide="gift" class="w-4 h-4"></i>
-            <span>১-ক্লিকে পুরো বান্ডেল অর্ডার করুন</span>
-          </button>
-        </div>
-
-        <div class="lg:col-span-5 relative">
-          <div class="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl border border-white/10">
-            <img 
-              src="https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=800&q=80" 
-              alt="Jumuah Bundle" 
-              class="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CRAFTSMANSHIP & VALUES ================= -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      
-      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex items-start gap-4">
-        <div class="w-12 h-12 rounded-xl bg-amber-50 text-[#a28359] flex items-center justify-center flex-shrink-0">
-          <i data-lucide="scissors" class="w-6 h-6"></i>
-        </div>
-        <div>
-          <h3 class="font-bangla font-bold text-stone-900 text-base mb-1">কারিগরদের নিখুঁত সেলাই</h3>
-          <p class="text-xs text-stone-500 font-bangla leading-relaxed">
-            প্রতিটি পাঞ্জাবি এবং জুব্বা তৈরি হয় উচ্চমানের মেশিনারিজ ও দক্ষ মাস্টার টেইলরদের প্রত্যক্ষ তত্ত্বাবধানে।
-          </p>
-        </div>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex items-start gap-4">
-        <div class="w-12 h-12 rounded-xl bg-amber-50 text-[#a28359] flex items-center justify-center flex-shrink-0">
-          <i data-lucide="droplet" class="w-6 h-6"></i>
-        </div>
-        <div>
-          <h3 class="font-bangla font-bold text-stone-900 text-base mb-1">শতভাগ বিশুদ্ধ ও ন্যাচারাল আতর</h3>
-          <p class="text-xs text-stone-500 font-bangla leading-relaxed">
-            কোনো কৃত্রিম অ্যালকোহল বা সিন্থেটিক রাসায়নিক ছাড়া দীর্ঘস্থায়ী প্রাকৃতিক এসেন্স সমৃদ্ধ।
-          </p>
-        </div>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex items-start gap-4">
-        <div class="w-12 h-12 rounded-xl bg-amber-50 text-[#a28359] flex items-center justify-center flex-shrink-0">
-          <i data-lucide="truck" class="w-6 h-6"></i>
-        </div>
-        <div>
-          <h3 class="font-bangla font-bold text-stone-900 text-base mb-1">দ্রুততম হোম ডেলিভারি</h3>
-          <p class="text-xs text-stone-500 font-bangla leading-relaxed">
-            ঢাকার ভিতরে ২৪-৪৮ ঘণ্টা এবং সারা বাংলাদেশের যেকোনো প্রান্তে ৭২ ঘণ্টার মধ্যে ডেলিভারি।
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= CUSTOMER REVIEWS ================= -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="text-center max-w-xl mx-auto mb-10">
-      <span class="text-xs uppercase tracking-widest text-[#a28359] font-semibold font-serif-luxury block mb-1">Customer Love</span>
-      <h2 class="text-2xl sm:text-3xl font-bold font-bangla text-stone-900">সম্মানিত গ্রাহকদের মতামত</h2>
-      <p class="text-xs text-stone-500 font-bangla mt-2">আমাদের পণ্য ও সেবায় সন্তুষ্ট সারা দেশের হাজারো ক্রেতা</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      
-      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-        <div>
-          <div class="flex items-center gap-1 text-amber-400 mb-3">
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-          </div>
-          <p class="text-stone-600 text-xs font-bangla leading-relaxed mb-4">
-            "রয়্যাল জ্যাকোয়ার্ড সাদা পাঞ্জাবিটা নিয়েছিলাম। কাপড় আর ফিনিশিং অসম্ভব সুন্দর! আড়ংয়ের প্রিমিয়াম কালেকশনের চেয়ে কোনো অংশে কম না, অথচ দামে অনেক সাশ্রয়ী।"
-          </p>
-        </div>
-        <div class="flex items-center gap-3 pt-3 border-t border-stone-100">
-          <div class="w-9 h-9 rounded-full bg-stone-900 text-[#c5a880] flex items-center justify-center font-bold text-xs">
-            TA
-          </div>
-          <div>
-            <h4 class="font-bangla font-semibold text-stone-900 text-xs">তানভীর আহমেদ</h4>
-            <span class="text-[10px] text-emerald-600 font-bangla flex items-center gap-1">
-              <i data-lucide="check-circle" class="w-3 h-3"></i> ভেরিফাইড বায়ার (ধানমন্ডি, ঢাকা)
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-        <div>
-          <div class="flex items-center gap-1 text-amber-400 mb-3">
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-          </div>
-          <p class="text-stone-600 text-xs font-bangla leading-relaxed mb-4">
-            "দেহন আল উদ আতরের সুবাসটা এক কথায় অসাধারণ। সকালে পাঞ্জাবিতে দিলে রাত পর্যন্ত মিষ্টি স্মোকি ঘ্রাণ থাকে। গিফট বক্সটাও খুব রাজকীয় ছিল।"
-          </p>
-        </div>
-        <div class="flex items-center gap-3 pt-3 border-t border-stone-100">
-          <div class="w-9 h-9 rounded-full bg-stone-900 text-[#c5a880] flex items-center justify-center font-bold text-xs">
-            MR
-          </div>
-          <div>
-            <h4 class="font-bangla font-semibold text-stone-900 text-xs">মাহমুদুর রহমান</h4>
-            <span class="text-[10px] text-emerald-600 font-bangla flex items-center gap-1">
-              <i data-lucide="check-circle" class="w-3 h-3"></i> ভেরিফাইড বায়ার (চট্টগ্রাম)
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm flex flex-col justify-between">
-        <div>
-          <div class="flex items-center gap-1 text-amber-400 mb-3">
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-          </div>
-          <p class="text-stone-600 text-xs font-bangla leading-relaxed mb-4">
-            "এমিরেটস জুব্বার কাটিং এবং সাইজ গাইডটা দারুণ কাজ করেছে। ৫'৮" হাইটে ৫৪ সাইজ একদম পারফেক্ট হয়েছে। ডেলিভারিও মাত্র ২ দিনে পেয়েছি।"
-          </p>
-        </div>
-        <div class="flex items-center gap-3 pt-3 border-t border-stone-100">
-          <div class="w-9 h-9 rounded-full bg-stone-900 text-[#c5a880] flex items-center justify-center font-bold text-xs">
-            SH
-          </div>
-          <div>
-            <h4 class="font-bangla font-semibold text-stone-900 text-xs">সাইফুল হাসান</h4>
-            <span class="text-[10px] text-emerald-600 font-bangla flex items-center gap-1">
-              <i data-lucide="check-circle" class="w-3 h-3"></i> ভেরিফাইড বায়ার (সিলেট)
-            </span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="bg-stone-900 text-stone-300 pt-16 pb-8 border-t border-stone-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-stone-800">
-        
-        <!-- Brand Info -->
-        <div class="lg:col-span-2">
-          <div class="flex items-center gap-2.5 mb-4">
-            <div class="w-10 h-10 rounded-xl bg-stone-800 flex items-center justify-center text-[#c5a880] border border-stone-700">
-              <span class="font-serif-luxury font-bold text-xl">س</span>
-            </div>
-            <div>
-              <span class="font-serif-luxury text-xl font-bold tracking-wider text-white">
-                AL-SUUNAH
-              </span>
-              <span class="text-[9px] uppercase tracking-[0.25em] text-[#c5a880] block">
-                Lifestyle & Elegance
-              </span>
-            </div>
-          </div>
-          <p class="text-xs text-stone-400 font-bangla leading-relaxed mb-6 max-w-sm">
-            আল-সুন্নাহ একটি রুচিশীল ও প্রিমিয়াম লাইফস্টাইল ব্র্যান্ড। বিশুদ্ধ সুন্নাহর অনুপ্রেরণায় আধুনিক ফ্যাশনের মেলবন্ধন ঘটিয়ে আমরা তৈরি করি মার্জিত পোশাক ও খাঁটি সুবাস।
-          </p>
-          <div class="flex items-center gap-3 text-stone-400">
-            <a href="#" class="w-8 h-8 rounded-full bg-stone-800 hover:bg-stone-700 flex items-center justify-center hover:text-white transition-colors">
-              <i data-lucide="facebook" class="w-4 h-4"></i>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-stone-800 hover:bg-stone-700 flex items-center justify-center hover:text-white transition-colors">
-              <i data-lucide="instagram" class="w-4 h-4"></i>
-            </a>
-            <a href="#" class="w-8 h-8 rounded-full bg-stone-800 hover:bg-stone-700 flex items-center justify-center hover:text-white transition-colors">
-              <i data-lucide="youtube" class="w-4 h-4"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Links 1 -->
-        <div>
-          <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4 font-serif-luxury">কলেকশন</h4>
-          <ul class="space-y-2 text-xs font-bangla text-stone-400">
-            <li><a href="#" class="hover:text-[#c5a880] transition-colors">পাঞ্জাবি কালেকশন</a></li>
-            <li><a href="#" class="hover:text-[#c5a880] transition-colors">কাবলি সেট</a></li>
-            <li><a href="#" class="hover:text-[#c5a880] transition-colors">এমিরেটস জুব্বা</a></li>
-            <li><a href="#" class="hover:text-[#c5a880] transition-colors">খাঁটি আতর ও উদ</a></li>
-            <li><a href="#" class="hover:text-[#c5a880] transition-colors">মিনিমাল টি-শার্ট</a></li>
-          </ul>
-        </div>
-
-        <!-- Links 2 -->
-        <div>
-          <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4 font-serif-luxury">গ্রাহক সেবা</h4>
-          <ul class="space-y-2 text-xs font-bangla text-stone-400">
-            <li><a href="#" onclick="openSizeRecommender()" class="hover:text-[#c5a880] transition-colors">সাইজ গাইড</a></li>
-            <li><a href="#" class="hover:text-[#c5a880] transition-colors">অর্ডার ট্র্যাকিং</a></li>
-            <li><a href="#" class="hover:text-[#c5a880] transition-colors">রিটার্ন ও এক্সচেঞ্জ পলিসি</a></li>
-            <li><a href="#" class="hover:text-[#c5a880] transition-colors">ডেলিভারি সংক্রান্ত তথ্য</a></li>
-            <li><a href="#" class="hover:text-[#c5a880] transition-colors">প্রাইভেসি পলিসি</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact Info -->
-        <div>
-          <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-4 font-serif-luxury">যোগাযোগ</h4>
-          <ul class="space-y-3 text-xs font-bangla text-stone-400">
-            <li class="flex items-start gap-2">
-              <i data-lucide="map-pin" class="w-4 h-4 text-[#c5a880] flex-shrink-0 mt-0.5"></i>
-              <span>রোড #১১, বনানী, ঢাকা-১২১৩, বাংলাদেশ</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <i data-lucide="phone" class="w-4 h-4 text-[#c5a880] flex-shrink-0"></i>
-              <span>+৮৮০ ১৭০০ ০০০০০০</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <i data-lucide="mail" class="w-4 h-4 text-[#c5a880] flex-shrink-0"></i>
-              <span>support@alsuunah.com</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- Bottom Bar -->
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bangla text-stone-500">
-        <p>© ২০২৬ AL-SUUNAH Lifestyle. সর্বস্বত্ব সংরক্ষিত।</p>
-        <div class="flex items-center gap-3 text-stone-400">
-          <span>নিরাপদ পেমেন্ট মেথড:</span>
-          <span class="font-bold text-white bg-stone-800 px-2 py-0.5 rounded text-[11px]">bKash</span>
-          <span class="font-bold text-white bg-stone-800 px-2 py-0.5 rounded text-[11px]">Nagad</span>
-          <span class="font-bold text-white bg-stone-800 px-2 py-0.5 rounded text-[11px]">Cash on Delivery</span>
-        </div>
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- ================= MOBILE NAVIGATION DRAWER ================= -->
-  <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <aside 
-    id="mobile-menu-drawer" 
-    class="fixed top-0 left-0 h-full w-full max-w-xs bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between"
-  >
-    <div class="p-5 border-b border-stone-200">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg bg-stone-900 flex items-center justify-center text-[#c5a880]">
-            <span class="font-serif-luxury font-bold text-base">س</span>
-          </div>
-          <span class="font-serif-luxury text-lg font-bold text-stone-900">AL-SUUNAH</span>
-        </div>
-        <button id="mobile-menu-close" class="p-2 text-stone-400 hover:text-stone-700">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-    </div>
-    
-    <div class="flex-1 overflow-y-auto p-5 font-bangla space-y-4 text-sm">
-      <button onclick="closeMobileMenu(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="w-full text-left font-semibold text-stone-800 hover:text-[#a28359] py-2 border-b border-stone-100 flex items-center justify-between">
-        <span>সকল পণ্য</span>
-        <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
-      </button>
-      <button onclick="closeMobileMenu(); document.querySelector('[data-category-tab=\'panjabi\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="w-full text-left font-semibold text-stone-800 hover:text-[#a28359] py-2 border-b border-stone-100 flex items-center justify-between">
-        <span>পাঞ্জাবি কালেকশন</span>
-        <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
-      </button>
-      <button onclick="closeMobileMenu(); document.querySelector('[data-category-tab=\'jubbah\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="w-full text-left font-semibold text-stone-800 hover:text-[#a28359] py-2 border-b border-stone-100 flex items-center justify-between">
-        <span>অ্যারাবিয়ান জুব্বা</span>
-        <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
-      </button>
-      <button onclick="closeMobileMenu(); document.querySelector('[data-category-tab=\'attar\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="w-full text-left font-semibold text-amber-700 hover:text-[#a28359] py-2 border-b border-stone-100 flex items-center justify-between">
-        <span class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4"></i> খাঁটি আতর ও উদ</span>
-        <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
-      </button>
-      <button onclick="closeMobileMenu(); document.querySelector('[data-category-tab=\'tshirt\']').click(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})" class="w-full text-left font-semibold text-stone-800 hover:text-[#a28359] py-2 border-b border-stone-100 flex items-center justify-between">
-        <span>মিনিমাল টি-শার্ট</span>
-        <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
-      </button>
-      <button onclick="closeMobileMenu(); openSizeRecommender()" class="w-full text-left font-semibold text-stone-600 hover:text-[#a28359] py-2 flex items-center justify-between">
-        <span class="flex items-center gap-2"><i data-lucide="ruler" class="w-4 h-4"></i> স্মার্ট সাইজ সহায়ক</span>
-        <i data-lucide="chevron-right" class="w-4 h-4 text-stone-400"></i>
-      </button>
-    </div>
-
-    <div class="p-5 border-t border-stone-100 font-bangla text-xs text-stone-500 space-y-2">
-      <div class="flex items-center gap-2">
-        <i data-lucide="phone-call" class="w-4 h-4 text-[#c5a880]"></i>
-        <span>হেল্পলাইন: 01700-000000</span>
-      </div>
-      <div class="flex items-center gap-2">
-        <i data-lucide="truck" class="w-4 h-4 text-[#c5a880]"></i>
-        <span>সারা দেশে ক্যাশ অন ডেলিভারি</span>
-      </div>
-    </div>
-  </aside>
-
-  <!-- ================= SLIDE-OUT CART DRAWER ================= -->
-  <div id="cart-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+<body class="bg-white text-stone-900 antialiased selection:bg-stone-200">
   
-  <aside 
-    id="cart-drawer" 
-    class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between"
-  >
-    <!-- Cart Header -->
-    <div class="p-4 sm:p-5 border-b border-stone-200">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2 font-bangla">
-          <i data-lucide="shopping-bag" class="w-5 h-5 text-[#a28359]"></i>
-          <h3 class="font-bold text-stone-900 text-base">শপিং ব্যাগ</h3>
-        </div>
-        <button id="cart-close-btn" class="p-2 text-stone-400 hover:text-stone-700 transition-colors">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
+  <!-- Root React Mounting Point -->
+  <div id="root"></div>
 
-      <!-- Free Shipping Progress Bar -->
-      <div class="mt-4 bg-amber-50 border border-amber-200/60 p-3 rounded-xl">
-        <p id="shipping-progress-text" class="text-xs font-bangla text-amber-950 mb-2">
-          আর মাত্র <strong>৳৩,০০০</strong> টাকার কেনাকাটা করলে <strong>ফ্রি ডেলিভারি!</strong>
-        </p>
-        <div class="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
-          <div id="shipping-progress-bar" class="bg-gradient-to-r from-amber-500 to-[#c5a880] h-full w-0 transition-all duration-500"></div>
-        </div>
-      </div>
-    </div>
+  <!-- React Application Source Code -->
+  <script type="text/babel">
+    const { useState, useEffect, useMemo } = React;
 
-    <!-- Cart Body -->
-    <div class="flex-1 overflow-y-auto p-4 sm:p-5">
-      <!-- Empty State -->
-      <div id="cart-empty-state" class="py-16 text-center">
-        <div class="w-16 h-16 rounded-full bg-stone-100 flex items-center justify-center mx-auto text-stone-400 mb-3">
-          <i data-lucide="shopping-cart" class="w-8 h-8"></i>
-        </div>
-        <h4 class="font-bangla font-semibold text-stone-700 text-sm">আপনার ব্যাগ খালি</h4>
-        <p class="font-bangla text-xs text-stone-400 mt-1 mb-4">আমাদের কালেকশন থেকে পছন্দসই পণ্য যোগ করুন।</p>
-        <button 
-          onclick="closeCartDrawer(); document.getElementById('catalog-section').scrollIntoView({behavior: 'smooth'})"
-          class="bg-stone-900 text-white font-bangla text-xs py-2 px-5 rounded-xl font-semibold"
-        >
-          কেনাকাটা শুরু করুন
-        </button>
-      </div>
+    // --- 1. Products Data (Enriched Catalog, Strictly Male Apparel & Pure Perfumes) ---
+    const PRODUCTS_DATA = [
+      // PANJABI
+      {
+        id: 'pj-01',
+        nameBangla: 'রয়্যাল অ্যারাবিয়ান জ্যাকোয়ার্ড পাঞ্জাবি',
+        nameEnglish: 'Royal Arabian Jacquard Panjabi',
+        category: 'panjabi',
+        price: 2950,
+        originalPrice: 3450,
+        discountPercentage: 15,
+        image: 'assets/images/panjabi.jpg',
+        rating: 4.9,
+        reviewsCount: 128,
+        badge: 'NEW ARRIVAL',
+        fabric: '১০০% প্রিমিয়াম লাক্সারি জ্যাকোয়ার্ড কটন',
+        description: 'আধুনিক নিখুঁত কাটিং এবং সূক্ষ্ম টেক্সচারযুক্ত জ্যাকোয়ার্ড ফেব্রিকে প্রস্তুতকৃত এই পাঞ্জাবিটি জুম\'আ কিংবা যেকোনো বিশেষ উৎসবে আপনাকে এনে দেবে রাজকীয় স্নিগ্ধতা।',
+        sizes: ['M (38)', 'L (40)', 'XL (42)', 'XXL (44)'],
+        colors: [{ name: 'Pure Ivory White', code: '#fcfbf7' }, { name: 'Royal Olive', code: '#4b5320' }]
+      },
+      {
+        id: 'pj-02',
+        nameBangla: 'প্রিমিয়াম ইজিপশিয়ান কটন কাবলি সেট',
+        nameEnglish: 'Egyptian Cotton Kabli Suit Set',
+        category: 'panjabi',
+        price: 3650,
+        originalPrice: 4200,
+        discountPercentage: 13,
+        image: 'https://images.unsplash.com/photo-1627916607164-7b20241db935?auto=format&fit=crop&w=800&q=80',
+        rating: 4.8,
+        reviewsCount: 94,
+        badge: 'POPULAR',
+        fabric: 'হাই-থ্রেড কাউন্ট ইজিপশিয়ান গিজা কটন',
+        description: 'প্রিমিয়াম কাবলি পাঞ্জাবির সাথে ম্যাচিং ট্রাউজার/পায়জামা সেট। মেটাল বোতাম ও ডাবল স্টিচ ফিনিশিং দীর্ঘস্থায়ী আরাম নিশ্চিত করে।',
+        sizes: ['M (38)', 'L (40)', 'XL (42)', 'XXL (44)'],
+        colors: [{ name: 'Slate Gray', code: '#708090' }, { name: 'Deep Navy', code: '#000080' }]
+      },
+      {
+        id: 'pj-03',
+        nameBangla: 'হ্যান্ডক্রাফটেড এমব্রয়ডারি সেমি-ফিটেড পাঞ্জাবি',
+        nameEnglish: 'Hand-Embroidered Semi-Fitted Panjabi',
+        category: 'panjabi',
+        price: 2750,
+        originalPrice: 3200,
+        discountPercentage: 14,
+        image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80',
+        rating: 4.9,
+        reviewsCount: 86,
+        badge: 'CLASSIC',
+        fabric: 'পিওর ফাইন কটন সুতি',
+        description: 'কলার ও প্লাকেটে সূক্ষ্ম সুতোর কাজ করা আড়ং স্টাইলের ক্লাসিক হ্যান্ডলুম পাঞ্জাবি। শতভাগ আরামদায়ক ও মার্জিত।',
+        sizes: ['M (38)', 'L (40)', 'XL (42)'],
+        colors: [{ name: 'Soft Mint', code: '#98ff98' }, { name: 'Pastel Beige', code: '#e8dcce' }]
+      },
+      {
+        id: 'pj-04',
+        nameBangla: 'ক্লাসিক লিনেন সামার কুল পাঞ্জাবি',
+        nameEnglish: 'Classic Linen Summer Panjabi',
+        category: 'panjabi',
+        price: 2450,
+        originalPrice: 2850,
+        discountPercentage: 14,
+        image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80',
+        rating: 4.7,
+        reviewsCount: 52,
+        badge: 'SUMMER COOL',
+        fabric: '১০০% পিওর অরগানিক লিনেন',
+        description: 'গরমের দিনের জন্য সর্বোচ্চ আরামদায়ক ব্রিদেবল লিনেন ফেব্রিক। প্রাকৃতিক টেক্সচার ও আরামদায়ক নরম কাটিং।',
+        sizes: ['M (38)', 'L (40)', 'XL (42)', 'XXL (44)'],
+        colors: [{ name: 'Beige Cream', code: '#f5f2eb' }]
+      },
 
-      <!-- Cart Items List Container -->
-      <div id="cart-items-container"></div>
-    </div>
+      // JUBBAH
+      {
+        id: 'jb-01',
+        nameBangla: 'এমিরেটস লাক্সারি কাট জুব্বা (ইউএই স্টাইল)',
+        nameEnglish: 'Emirati Luxury Cut Thobe / Jubbah',
+        category: 'jubbah',
+        price: 3950,
+        originalPrice: 4600,
+        discountPercentage: 14,
+        image: 'assets/images/jubbah.jpg',
+        rating: 5.0,
+        reviewsCount: 112,
+        badge: 'TRENDING',
+        fabric: 'প্রিমিয়াম জাপানিজ সিল্কি ম্যাট ফেব্রিক',
+        description: 'সংযুক্ত আরব আমিরাতের ঐতিহ্যবাহী আল-তারবুশ ডিজাইন এবং নিখুঁত ফল বিশিষ্ট জুব্বা। কোনো ইস্ত্রি নষ্ট হয় না, রিংকেল-ফ্রি।',
+        sizes: ['52 (5\'4"-5\'6")', '54 (5\'6"-5\'8")', '56 (5\'8"-5\'10")', '58 (5\'10"+)'],
+        colors: [{ name: 'Pristine White', code: '#fafafa' }, { name: 'Desert Dune', code: '#d4c7b8' }]
+      },
+      {
+        id: 'jb-02',
+        nameBangla: 'মরোক্কান হুডেড জুব্বা / থোব',
+        nameEnglish: 'Moroccan Royal Hooded Djellaba',
+        category: 'jubbah',
+        price: 4450,
+        originalPrice: 5200,
+        discountPercentage: 15,
+        image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80',
+        rating: 4.8,
+        reviewsCount: 63,
+        badge: 'EXCLUSIVE',
+        fabric: 'হেভিওয়েট ট্রিপল-প্লাই প্রিমিয়াম ফেব্রিক',
+        description: 'মরক্কোর রাজকীয় ঐতিহ্যবাহী হুডেড জেল্লাবা। প্রিমিয়াম জিওমেট্রিক বোতাম ও বর্ডার আর্টওয়ার্ক সমন্বিত।',
+        sizes: ['54 (5\'6"-5\'8")', '56 (5\'8"-5\'10")', '58 (5\'10"+)'],
+        colors: [{ name: 'Forest Green', code: '#2e493e' }]
+      },
+      {
+        id: 'jb-03',
+        nameBangla: 'সৌদি ক্লাসিক স্টিফ-কলার জুব্বা',
+        nameEnglish: 'Saudi Classic Stiff Collar Thobe',
+        category: 'jubbah',
+        price: 3650,
+        originalPrice: 4100,
+        discountPercentage: 11,
+        image: 'https://images.unsplash.com/photo-1564557287817-3785e38ec1f5?auto=format&fit=crop&w=800&q=80',
+        rating: 4.9,
+        reviewsCount: 44,
+        badge: 'SIGNATURE',
+        fabric: 'হাই-ডেনসিটি কোরিয়ান সুপ্রিম কটন',
+        description: 'সৌদি আরবের জনপ্রিয় ক্লাসিক স্টিফ কলার এবং টুইন বাটন কাফ ডিজাইন। অত্যন্ত মার্জিত এবং রাজকীয় ফিটিং।',
+        sizes: ['52 (5\'4"-5\'6")', '54 (5\'6"-5\'8")', '56 (5\'8"-5\'10")', '58 (5\'10"+)'],
+        colors: [{ name: 'Snow White', code: '#ffffff' }]
+      },
 
-    <!-- Cart Footer & Checkout Action -->
-    <div id="cart-footer" class="p-4 sm:p-5 border-t border-stone-200 bg-stone-50 hidden">
-      <div class="flex items-center justify-between mb-2 font-bangla">
-        <span class="text-xs text-stone-600">সাব-টোটাল:</span>
-        <span id="cart-subtotal" class="text-lg font-bold text-stone-900 font-bangla">৳০</span>
-      </div>
-      <p class="text-[11px] text-stone-400 font-bangla mb-4">
-        * ডেলিভারি চার্জ চেকআউটের সময় যুক্ত হবে।
-      </p>
+      // ATTAR & OUD
+      {
+        id: 'at-01',
+        nameBangla: 'দেহন আল উদ কাম্বোডি (আর্টিসানাল খাঁটি আতর)',
+        nameEnglish: 'Dehn Al Oud Combodi Artisan Attar',
+        category: 'attar',
+        price: 2450,
+        originalPrice: 2900,
+        discountPercentage: 15,
+        image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80',
+        rating: 5.0,
+        reviewsCount: 245,
+        badge: 'SIGNATURE',
+        fabric: '১০০% খাঁটি অ্যালকোহল-মুক্ত প্রাকৃতিক তেল',
+        description: 'কম্বোডিয়ান বন্য আগরউডের গভীর, মিষ্টি ও স্মোকি সুবাসের সংমিশ্রণ। রাজকীয় ও ঐতিহ্যবাহী আভিজাত্যের চূড়ান্ত প্রতীক।',
+        sizes: ['3ml (টেস্টার)', '6ml (রয়্যাল বক্স)', '12ml (ভিআইপি বটল)'],
+        colors: [{ name: 'Golden Amber Essence', code: '#d4af37' }],
+        fragranceNotes: {
+          top: 'স্পাইসি সুইট বার্গামট ও দারুচিনির হালকা ছোঁয়া',
+          heart: 'খাঁটি কম্বোডিয়ান আগরউড (Pure Agarwood)',
+          base: 'গভীর স্মোকি লেদার, আম্বার ও কস্তুরী (Musk)',
+          longevity: '১৪+ ঘণ্টা স্থায়ী সুবাস',
+          projection: 'শক্তিশালী রাজকীয় প্রজেকশন'
+        }
+      },
+      {
+        id: 'at-02',
+        nameBangla: 'রয়্যাল হোয়াইট মাস্ক (স্নিগ্ধ ও আত্মিক সুবাস)',
+        nameEnglish: 'Royal White Musk Concentrated Oil',
+        category: 'attar',
+        price: 1350,
+        originalPrice: 1650,
+        discountPercentage: 18,
+        image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80',
+        rating: 4.9,
+        reviewsCount: 198,
+        badge: 'BEST GIFT',
+        fabric: 'নন-অ্যালকোহলিক পারফিউম কনসেন্ট্রেট',
+        description: 'পবিত্র কাবা প্রাঙ্গনের মতো প্রশান্তিময়, স্নিগ্ধ এবং মৃদু মিষ্টি সুবাস। প্রতিদিনের সালাত ও বিশেষ মুহূর্তের সঙ্গী।',
+        sizes: ['3ml', '6ml', '12ml'],
+        colors: [{ name: 'Pure Pearl Oil', code: '#f5f5f5' }],
+        fragranceNotes: {
+          top: 'লিলি অফ দ্য ভ্যালি ও সফট ফ্রুটস',
+          heart: 'পাউডারি আইরিস ও সাদা ফুলের পাপড়ি',
+          base: 'ক্রিমি চন্দন ও খাঁটি হোয়াইট মাস্ক',
+          longevity: '১০+ ঘণ্টা মিষ্টি সুবাস',
+          projection: 'মৃদু, মার্জিত ও আত্মিক প্রশান্তি'
+        }
+      },
+      {
+        id: 'at-03',
+        nameBangla: 'মদিনা রোজ অ্যান্ড আম্বার উড',
+        nameEnglish: 'Madinah Rose & Amber Wood',
+        category: 'attar',
+        price: 1750,
+        originalPrice: 2100,
+        discountPercentage: 16,
+        image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80',
+        rating: 4.8,
+        reviewsCount: 89,
+        badge: 'SPECIAL EDITION',
+        fabric: 'অর্গানিক অ্যারোমা ব্লেন্ড',
+        description: 'তায়েফি গোলাপের রাজকীয় সৌরভ এবং উষ্ণ আম্বারের এক অপূর্ব মিলন। মন জুড়িয়ে যাওয়া আবেশ তৈরি করে।',
+        sizes: ['6ml', '12ml'],
+        colors: [{ name: 'Ruby Amber Oil', code: '#cc7722' }],
+        fragranceNotes: {
+          top: 'তায়েফি ফ্রেশ গোলাপ ও জাফরান',
+          heart: 'স্যান্ডালউড ও কারামেল সুইট নোট',
+          base: 'ওয়ার্ম আম্বার ও ড্রাই উডি ফরেস্ট',
+          longevity: '১২+ ঘণ্টা',
+          projection: 'মাঝারি থেকে স্ট্রং'
+        }
+      },
 
-      <button 
-        onclick="openQuickCheckoutModal()"
-        class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bangla text-sm font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95"
-      >
-        <i data-lucide="zap" class="w-4 h-4 text-[#c5a880]"></i>
-        <span>১-ক্লিকে দ্রুত চেকআউট করুন</span>
-      </button>
-    </div>
-  </aside>
+      // T-SHIRTS
+      {
+        id: 'ts-01',
+        nameBangla: 'প্রিমিয়াম সুপীমা ওভারসাইজড চকোলেট টি-শার্ট',
+        nameEnglish: 'SNYX Oversized Heavyweight Tee',
+        category: 'tshirt',
+        price: 950,
+        originalPrice: 1250,
+        discountPercentage: 24,
+        image: 'assets/images/tshirt.jpg',
+        rating: 4.9,
+        reviewsCount: 182,
+        badge: 'HOT DROP',
+        fabric: '২৪০ জিএসএম ড্রপ-শোল্ডার কম্বড কটন',
+        description: 'মডার্ন মিনিমালিস্ট স্ট্রিটওয়্যার ড্রপ শোল্ডার টি-শার্ট। রিং-স্পান তুলা যা দীর্ঘমেয়াদে আরাম ও প্রিমিয়াম আউটলুক নিশ্চিত করে।',
+        sizes: ['M (Chest 40)', 'L (Chest 42)', 'XL (Chest 44)', 'XXL (Chest 46)'],
+        colors: [{ name: 'Rich Mocha Brown', code: '#4b3621' }, { name: 'Washed Black', code: '#1a1a1a' }]
+      },
+      {
+        id: 'ts-02',
+        nameBangla: 'সুপীমা কটন পিওর হোয়াইট টি-শার্ট',
+        nameEnglish: 'Supima Pure White Heavyweight Tee',
+        category: 'tshirt',
+        price: 850,
+        originalPrice: 1100,
+        discountPercentage: 22,
+        image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80',
+        rating: 4.9,
+        reviewsCount: 145,
+        badge: 'ESSENTIAL',
+        fabric: '২৪০ জিএসএম কম্বড সুপীমা কটন',
+        description: 'একদম নিখুঁত ও মার্জিত ফিটিং। অ্যান্টি-পিলিং সুতা যা বহু ওয়াশের পরেও নতুন কাপড়ের মতো উজ্জ্বল থাকে।',
+        sizes: ['M (Chest 40)', 'L (Chest 42)', 'XL (Chest 44)', 'XXL (Chest 46)'],
+        colors: [{ name: 'Pure White', code: '#ffffff' }]
+      },
+      {
+        id: 'ts-03',
+        nameBangla: 'মিনিমালিস্ট লাক্সারি পোলো টি-শার্ট',
+        nameEnglish: 'Classic Minimalist Collar Polo',
+        category: 'tshirt',
+        price: 980,
+        originalPrice: 1250,
+        discountPercentage: 21,
+        image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=80',
+        rating: 4.7,
+        reviewsCount: 77,
+        badge: 'SMART CASUAL',
+        fabric: '১০০% ব্রিদেবল পলি-কটন কম্বিনেশন',
+        description: 'দৈনন্দিন আরামের জন্য উপযুক্ত আধুনিক পোলো। প্রিমিয়াম কলার ও মেটাল বোতাম ফিনিশ।',
+        sizes: ['M', 'L', 'XL', 'XXL'],
+        colors: [{ name: 'Midnight Navy', code: '#1a2942' }]
+      }
+    ];
 
-  <!-- ================= PRODUCT DETAIL MODAL ================= -->
-  <div id="product-detail-modal" class="modal-root hidden fixed inset-0 z-50 flex items-center justify-center p-4">
-    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-    <div class="relative bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 z-10">
-      <button onclick="closeAllModals()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 p-2 z-20">
-        <i data-lucide="x" class="w-6 h-6"></i>
-      </button>
-      <div id="product-detail-modal-body">
-        <!-- Injected by JavaScript -->
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= INTERACTIVE SIZE RECOMMENDER MODAL ================= -->
-  <div id="size-guide-modal" class="modal-root hidden fixed inset-0 z-50 flex items-center justify-center p-4">
-    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-    <div class="relative bg-white rounded-3xl max-w-md w-full shadow-2xl p-6 sm:p-8 z-10">
-      <button onclick="closeAllModals()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 p-2">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <div class="flex items-center gap-2 mb-2 text-[#a28359]">
-        <i data-lucide="ruler" class="w-5 h-5"></i>
-        <h3 class="font-bangla font-bold text-stone-900 text-lg">স্মার্ট সাইজ সহায়ক</h3>
-      </div>
-      <p class="text-xs text-stone-500 font-bangla mb-5">
-        আপনার উচ্চতা ও আনুমানিক ওজন দিলে আমাদের সিস্টেম আপনার জন্য সেরা ফিটিং সাইজ নির্ধারণ করে দেবে।
-      </p>
-
-      <div class="space-y-4 font-bangla text-xs">
-        <div>
-          <label class="block font-semibold text-stone-700 mb-1">উচ্চতা (ফুট ও ইঞ্চি):</label>
-          <div class="grid grid-cols-2 gap-2">
-            <select id="size-height-feet" class="bg-stone-50 border border-stone-200 rounded-xl p-2.5">
-              <option value="5">৫ ফুট</option>
-              <option value="6">৬ ফুট</option>
-            </select>
-            <select id="size-height-inches" class="bg-stone-50 border border-stone-200 rounded-xl p-2.5">
-              <option value="4">৪ ইঞ্চি</option>
-              <option value="5">৫ ইঞ্চি</option>
-              <option value="6">৬ ইঞ্চি</option>
-              <option value="7">৭ ইঞ্চি</option>
-              <option value="8" selected>৮ ইঞ্চি</option>
-              <option value="9">৯ ইঞ্চি</option>
-              <option value="10">১০ ইঞ্চি</option>
-              <option value="11">১১ ইঞ্চি</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label class="block font-semibold text-stone-700 mb-1">ওজন (কেজি):</label>
-          <input 
-            type="number" 
-            id="size-weight-kg" 
-            value="68" 
-            min="45" 
-            max="120"
-            class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 text-stone-800"
-          />
-        </div>
-
-        <button 
-          onclick="calculateRecommendedSize()"
-          class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bold py-3 rounded-xl transition-all shadow"
-        >
-          সাইজ চেক করুন
-        </button>
-
-        <div id="size-recommendation-result"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= 1-CLICK FAST CHECKOUT MODAL ================= -->
-  <div id="checkout-modal" class="modal-root hidden fixed inset-0 z-50 flex items-center justify-center p-4">
-    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-    <div class="relative bg-white rounded-3xl max-w-lg w-full max-h-[95vh] overflow-y-auto shadow-2xl p-6 sm:p-8 z-10">
-      <button onclick="closeAllModals()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 p-2">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <div class="flex items-center gap-2 mb-1 text-[#a28359]">
-        <i data-lucide="zap" class="w-5 h-5"></i>
-        <h3 class="font-bangla font-bold text-stone-900 text-lg">১-ক্লিক দ্রুত অর্ডার</h3>
-      </div>
-      <p class="text-xs text-stone-500 font-bangla mb-4">
-        কোনো পাসওয়ার্ড ছাড়াই শুধু ডেলিভারির তথ্য দিয়ে অর্ডার কনফার্ম করুন।
-      </p>
-
-      <!-- Order Summary Card -->
-      <div id="checkout-order-summary" class="bg-stone-50 border border-stone-200 p-3.5 rounded-2xl mb-4">
-        <!-- Rendered by app.js -->
-      </div>
-
-      <form onsubmit="confirmOrderSubmit(event)" class="space-y-3 font-bangla text-xs">
-        <div>
-          <label class="block font-semibold text-stone-700 mb-1">আপনার পূর্ণ নাম *</label>
-          <input 
-            type="text" 
-            id="order-name" 
-            required 
-            placeholder="উদা: আব্দুল্লাহ আল মামুন" 
-            class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 focus:border-[#c5a880] focus:bg-white focus:outline-none"
-          />
-        </div>
-
-        <div>
-          <label class="block font-semibold text-stone-700 mb-1">মোবাইল নম্বর (১১ ডিজিট) *</label>
-          <input 
-            type="tel" 
-            id="order-phone" 
-            required 
-            placeholder="01XXXXXXXXX" 
-            class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 focus:border-[#c5a880] focus:bg-white focus:outline-none font-mono"
-          />
-        </div>
-
-        <div>
-          <label class="block font-semibold text-stone-700 mb-1">সম্পূর্ণ ঠিকানা (বাসা/রোড, থানা, জেলা) *</label>
-          <textarea 
-            id="order-address" 
-            rows="2" 
-            required 
-            placeholder="উদা: বাড়ি #১২, রোড #০৫, ব্লক সি, বনশ্রী, ঢাকা" 
-            class="w-full bg-stone-50 border border-stone-200 rounded-xl p-2.5 focus:border-[#c5a880] focus:bg-white focus:outline-none"
-          ></textarea>
-        </div>
-
-        <!-- Delivery Area Selection -->
-        <div>
-          <label class="block font-semibold text-stone-700 mb-1.5">ডেলিভারি লোকেশন:</label>
-          <div class="grid grid-cols-2 gap-3">
-            <label class="flex items-center gap-2 p-2.5 border border-stone-200 rounded-xl cursor-pointer hover:bg-stone-50">
-              <input type="radio" name="delivery-area" value="inside" checked onchange="updateDeliveryArea('inside')" class="text-stone-900 focus:ring-0">
-              <div>
-                <span class="font-bold text-stone-800 block">ঢাকার ভিতরে</span>
-                <span class="text-[10px] text-stone-500">চার্জ: ৳৭০</span>
-              </div>
-            </label>
-            <label class="flex items-center gap-2 p-2.5 border border-stone-200 rounded-xl cursor-pointer hover:bg-stone-50">
-              <input type="radio" name="delivery-area" value="outside" onchange="updateDeliveryArea('outside')" class="text-stone-900 focus:ring-0">
-              <div>
-                <span class="font-bold text-stone-800 block">ঢাকার বাইরে</span>
-                <span class="text-[10px] text-stone-500">চার্জ: ৳১৩০</span>
-              </div>
-            </label>
-          </div>
-        </div>
-
-        <!-- Payment Method -->
-        <div>
-          <label class="block font-semibold text-stone-700 mb-1.5">পেমেন্ট মেথড:</label>
-          <div class="space-y-2">
-            <label class="flex items-center gap-2 p-2.5 border border-stone-300 bg-amber-50/50 rounded-xl cursor-pointer">
-              <input type="radio" name="payment-method" value="cod" checked class="text-stone-900 focus:ring-0">
-              <div class="flex items-center justify-between w-full">
-                <span class="font-bold text-stone-900">ক্যাশ অন ডেলিভারি (পণ্য হাতে পেয়ে টাকা দিন)</span>
-                <i data-lucide="banknote" class="w-4 h-4 text-emerald-600"></i>
-              </div>
-            </label>
-            <label class="flex items-center gap-2 p-2.5 border border-stone-200 rounded-xl cursor-pointer hover:bg-stone-50">
-              <input type="radio" name="payment-method" value="bkash" class="text-stone-900 focus:ring-0">
-              <div class="flex items-center justify-between w-full">
-                <span class="font-semibold text-stone-700">বিকাশ / নগদ (অনলাইন পেমেন্ট)</span>
-                <span class="text-[10px] bg-pink-100 text-pink-700 font-bold px-2 py-0.5 rounded">bKash</span>
-              </div>
-            </label>
-          </div>
-        </div>
-
-        <button 
-          type="submit"
-          class="w-full bg-stone-900 hover:bg-stone-800 text-white font-bangla font-bold text-sm py-3.5 px-4 rounded-xl shadow-lg transition-transform active:scale-95 flex items-center justify-center gap-2 mt-2"
-        >
-          <i data-lucide="check-circle" class="w-4 h-4 text-[#c5a880]"></i>
-          <span>অর্ডার নিশ্চিত করুন</span>
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ================= ORDER CONFIRMATION SUCCESS MODAL ================= -->
-  <div id="order-success-modal" class="modal-root hidden fixed inset-0 z-50 flex items-center justify-center p-4">
-    <div class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-    <div class="relative bg-white rounded-3xl max-w-md w-full shadow-2xl p-6 sm:p-8 z-10 text-center">
+    // --- 2. Main ABHA React Application Component ---
+    function App() {
+      const [products] = useState(PRODUCTS_DATA);
       
-      <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 animate-bounce">
-        <i data-lucide="check" class="w-8 h-8"></i>
-      </div>
+      // Page Routing: { type: 'home' } or { type: 'category', categoryId: 'panjabi' }
+      const [currentPage, setCurrentPage] = useState({ type: 'home' });
 
-      <h3 class="font-bangla font-bold text-stone-900 text-xl mb-1">
-        আলহামদুলিল্লাহ! আপনার অর্ডার সফল হয়েছে
-      </h3>
-      <p class="text-xs text-stone-500 font-bangla mb-5">
-        আমাদের প্রতিনিধি খুব শীঘ্রই কল করে অর্ডারটি ভেরিফাই করবেন এবং পার্সেল প্রস্তুত করা হবে।
-      </p>
+      const [activeCategory, setActiveCategory] = useState('all');
+      const [activeSort, setActiveSort] = useState('popular');
+      const [searchQuery, setSearchQuery] = useState('');
+      const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-      <div id="success-order-details" class="mb-5">
-        <!-- Rendered by app.js -->
-      </div>
+      // Right-to-Left Product Slider Mode vs Grid Mode
+      const [displayMode, setDisplayMode] = useState('slider'); // 'slider' | 'grid'
+      const [isAutoScrollPaused, setIsAutoScrollPaused] = useState(false);
 
-      <div class="flex flex-col gap-2">
-        <a 
-          href="https://wa.me/8801700000000" 
-          target="_blank"
-          class="bg-emerald-600 hover:bg-emerald-700 text-white font-bangla font-semibold text-xs py-3 px-4 rounded-xl flex items-center justify-center gap-2"
-        >
-          <i data-lucide="message-circle" class="w-4 h-4"></i>
-          <span>হোয়াটসঅ্যাপে দ্রুত আপডেট নিন</span>
-        </a>
+      // Hero Interactive Look Selector with 5-second automatic slider
+      const [activeHeroLook, setActiveHeroLook] = useState(0);
 
-        <button 
-          onclick="closeAllModals()" 
-          class="bg-stone-100 hover:bg-stone-200 text-stone-800 font-bangla font-semibold text-xs py-2.5 px-4 rounded-xl"
-        >
-          আরও কেনাকাটা করুন
-        </button>
-      </div>
+      useEffect(() => {
+        const heroTimer = setInterval(() => {
+          setActiveHeroLook((prev) => (prev + 1) % 3);
+        }, 5000);
+        return () => clearInterval(heroTimer);
+      }, []);
 
-    </div>
-  </div>
+      // Cart & Wishlist State
+      const [cart, setCart] = useState(() => {
+        try {
+          const saved = localStorage.getItem('abha_react_cart');
+          return saved ? JSON.parse(saved) : [];
+        } catch { return []; }
+      });
 
-  <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
-  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+      const [wishlist, setWishlist] = useState(() => {
+        try {
+          const saved = localStorage.getItem('abha_react_wishlist');
+          return saved ? JSON.parse(saved) : [];
+        } catch { return []; }
+      });
 
-  <!-- Scripts -->
-  <script src="assets/js/products.js"></script>
-  <script src="assets/js/app.js"></script>
+      // Modals State
+      const [selectedProduct, setSelectedProduct] = useState(null);
+      const [isCartOpen, setIsCartOpen] = useState(false);
+      const [isSizeAdvisorOpen, setIsSizeAdvisorOpen] = useState(false);
+      const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+      const [completedOrder, setCompletedOrder] = useState(null);
+      const [toast, setToast] = useState(null);
+
+      // Selected Modal Variant State
+      const [modalSize, setModalSize] = useState('');
+      const [modalColor, setModalColor] = useState('');
+
+      // Size Advisor Form State
+      const [advisorFeet, setAdvisorFeet] = useState(5);
+      const [advisorInches, setAdvisorInches] = useState(8);
+      const [advisorWeight, setAdvisorWeight] = useState(68);
+      const [advisorResult, setAdvisorResult] = useState(null);
+
+      // Category Page specific filter state
+      const [categoryPageSize, setCategoryPageSize] = useState('all');
+      const [categoryPageSort, setCategoryPageSort] = useState('popular');
+
+      // Checkout Form State
+      const [checkoutName, setCheckoutName] = useState('');
+      const [checkoutPhone, setCheckoutPhone] = useState('');
+      const [checkoutAddress, setCheckoutAddress] = useState('');
+      const [deliveryArea, setDeliveryArea] = useState('inside');
+      const [paymentMethod, setPaymentMethod] = useState('cod');
+      const [checkoutError, setCheckoutError] = useState('');
+
+      useEffect(() => {
+        localStorage.setItem('abha_react_cart', JSON.stringify(cart));
+      }, [cart]);
+
+      useEffect(() => {
+        localStorage.setItem('abha_react_wishlist', JSON.stringify(wishlist));
+      }, [wishlist]);
+
+      const showToast = (message) => {
+        setToast(message);
+        setTimeout(() => setToast(null), 3000);
+      };
+
+      // Page Navigation
+      const navigateToCategoryPage = (catId) => {
+        setCurrentPage({ type: 'category', categoryId: catId });
+        setCategoryPageSize('all');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      const navigateToHome = () => {
+        setCurrentPage({ type: 'home' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      const handleOpenDetails = (prod) => {
+        setSelectedProduct(prod);
+        setModalSize(prod.sizes ? prod.sizes[0] : 'Standard');
+        setModalColor(prod.colors && prod.colors[0] ? prod.colors[0].name : '');
+      };
+
+      const handleAddToCart = (product, size, color, quantity = 1) => {
+        const pSize = size || (product.sizes ? product.sizes[0] : 'Standard');
+        const pColor = color || (product.colors && product.colors[0] ? product.colors[0].name : '');
+
+        const existingIdx = cart.findIndex(
+          (item) => item.id === product.id && item.size === pSize && item.color === pColor
+        );
+
+        if (existingIdx > -1) {
+          const updated = [...cart];
+          updated[existingIdx].quantity += quantity;
+          setCart(updated);
+        } else {
+          setCart([
+            ...cart,
+            {
+              id: product.id,
+              nameBangla: product.nameBangla,
+              price: product.price,
+              image: product.image,
+              size: pSize,
+              color: pColor,
+              quantity: quantity
+            }
+          ]);
+        }
+
+        showToast(`"${product.nameBangla}" কার্টে যুক্ত হয়েছে!`);
+        setIsCartOpen(true);
+        setSelectedProduct(null);
+      };
+
+      const handleUpdateQty = (index, delta) => {
+        const updated = [...cart];
+        updated[index].quantity += delta;
+        if (updated[index].quantity <= 0) {
+          updated.splice(index, 1);
+        }
+        setCart(updated);
+      };
+
+      const handleRemoveCartItem = (index) => {
+        const updated = [...cart];
+        updated.splice(index, 1);
+        setCart(updated);
+        showToast('আইটেমটি সরানো হয়েছে');
+      };
+
+      const handleToggleWishlist = (id) => {
+        if (wishlist.includes(id)) {
+          setWishlist(wishlist.filter((x) => x !== id));
+          showToast('উইশলিস্ট থেকে সরানো হয়েছে');
+        } else {
+          setWishlist([...wishlist, id]);
+          showToast('উইশলিস্টে যুক্ত করা হয়েছে! ❤️');
+        }
+      };
+
+      const handleCalculateSize = (e) => {
+        e.preventDefault();
+        const totalInches = (parseInt(advisorFeet) * 12) + parseInt(advisorInches);
+        const w = parseInt(advisorWeight);
+
+        let size = 'L (40)';
+        let note = 'আপনার উচ্চতা ও ওজনের জন্য পারফেক্ট সাইজ এল (৪০)। এটি স্মার্ট ও এলিগ্যান্ট ফিটিং দেবে।';
+
+        if (w < 60 || totalInches < 65) {
+          size = 'M (38)';
+          note = 'আপনার জন্য রেগুলার ফিট এম (৩৮) সবচেয়ে সুন্দরভাবে মানাবে।';
+        } else if (w <= 74 && totalInches <= 69) {
+          size = 'L (40)';
+          note = 'আপনার জন্য পারফেক্ট সাইজ এল (৪০)।';
+        } else if (w <= 86) {
+          size = 'XL (42)';
+          note = 'আপনার চেস্ট ও শোল্ডার আরামদায়ক রাখতে এক্সএল (৪২) বেছে নিন।';
+        } else {
+          size = 'XXL (44)';
+          note = 'আপনার জন্য ডাবল এক্সএল (৪৪) সবচেয়ে উপযুক্ত হবে।';
+        }
+
+        setAdvisorResult({ size, note });
+      };
+
+      const handleConfirmOrder = (e) => {
+        e.preventDefault();
+        if (!checkoutName.trim() || !checkoutPhone.trim() || !checkoutAddress.trim()) {
+          setCheckoutError('অনুগ্রহ করে নাম, ফোন নম্বর এবং সম্পূর্ণ ঠিকানা দিন।');
+          return;
+        }
+
+        const cleanPhone = checkoutPhone.replace(/\D/g, '');
+        if (cleanPhone.length < 11) {
+          setCheckoutError('সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন (উদা: 017XXXXXXXX)।');
+          return;
+        }
+
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const isFree = subtotal >= 3000;
+        const deliveryFee = isFree ? 0 : (deliveryArea === 'inside' ? 70 : 130);
+        const grandTotal = subtotal + deliveryFee;
+        const orderId = 'ABHA-' + Math.floor(100000 + Math.random() * 900000);
+
+        setCompletedOrder({
+          orderId,
+          name: checkoutName,
+          phone: checkoutPhone,
+          address: checkoutAddress,
+          paymentMethod,
+          grandTotal
+        });
+
+        setCart([]);
+        setIsCheckoutOpen(false);
+      };
+
+      // Home filtered products
+      const homeFilteredProducts = useMemo(() => {
+        let list = [...products];
+        if (activeCategory !== 'all') {
+          list = list.filter((p) => p.category === activeCategory);
+        }
+        if (searchQuery.trim()) {
+          const q = searchQuery.toLowerCase().trim();
+          list = list.filter(
+            (p) =>
+              p.nameBangla.toLowerCase().includes(q) ||
+              p.nameEnglish.toLowerCase().includes(q)
+          );
+        }
+        if (activeSort === 'low-high') list.sort((a, b) => a.price - b.price);
+        else if (activeSort === 'high-low') list.sort((a, b) => b.price - a.price);
+        else if (activeSort === 'rating') list.sort((a, b) => b.rating - a.rating);
+        else if (activeSort === 'popular') list.sort((a, b) => b.reviewsCount - a.reviewsCount);
+        return list;
+      }, [products, activeCategory, searchQuery, activeSort]);
+
+      // Category page filtered products
+      const currentCategoryProducts = useMemo(() => {
+        if (currentPage.type !== 'category') return [];
+        let list = products.filter((p) => p.category === currentPage.categoryId);
+
+        if (categoryPageSize !== 'all') {
+          list = list.filter((p) => p.sizes && p.sizes.some((s) => s.includes(categoryPageSize)));
+        }
+
+        if (categoryPageSort === 'low-high') list.sort((a, b) => a.price - b.price);
+        else if (categoryPageSort === 'high-low') list.sort((a, b) => b.price - a.price);
+        else if (categoryPageSort === 'rating') list.sort((a, b) => b.rating - a.rating);
+        else if (categoryPageSort === 'popular') list.sort((a, b) => b.reviewsCount - a.reviewsCount);
+
+        return list;
+      }, [products, currentPage, categoryPageSize, categoryPageSort]);
+
+      const categoryTitles = {
+        panjabi: { title: 'PANJABI & KABLI', bangla: 'পাঞ্জাবি ও কাবলি কালেকশন', desc: 'ঐতিহ্যবাহী নিখুঁত হ্যান্ডলুম, প্রিমিয়াম জ্যাকোয়ার্ড ও খাঁটি মিসরীয় সুতির রাজকীয় পাঞ্জাবি সম্ভার।' },
+        jubbah: { title: 'ARABIAN JUBBAH & THOBE', bangla: 'অ্যারাবিয়ান জুব্বা কালেকশন', desc: 'সংযুক্ত আরব আমিরাত ও মরক্কোর ঐতিহ্যবাহী রিংকেল-ফ্রি প্রিমিয়াম সিল্কি ম্যাট ফেব্রিকের জুব্বা।' },
+        attar: { title: 'ARTISANAL ATTAR & OUD', bangla: 'খাঁটি আতর ও উদ কালেকশন', desc: '১০০% অ্যালকোহল-মুক্ত বন্য কম্বোডিয়ান আগরউড, রয়্যাল হোয়াইট মাস্ক ও তায়েফি গোলাপের বিশুদ্ধ সুবাস।' },
+        tshirt: { title: 'MINIMAL STREETWEAR T-SHIRTS', bangla: 'মিনিমালিস্ট টি-শার্ট কালেকশন', desc: '২৪০ জিএসএম ড্রপ-শোল্ডার কম্বড সুপীমা কটন ও ক্লাসিক পোলো—দৈনন্দিন আরামের আধুনিক পোশাক।' }
+      };
+
+      const cartSubtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const totalCartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const freeShipThreshold = 3000;
+      const shipDiff = freeShipThreshold - cartSubtotal;
+      const shipProgress = Math.min(100, Math.round((cartSubtotal / freeShipThreshold) * 100));
+
+      const renderProductCard = (p, customKey) => {
+        const isWished = wishlist.includes(p.id);
+        return (
+          <div key={customKey || p.id} className="group bg-white rounded-none border border-stone-200 flex flex-col justify-between hover:shadow-lg transition-all duration-300 h-full">
+            <div>
+              <div 
+                className="relative aspect-[4/5] bg-[#f8f8f8] overflow-hidden cursor-pointer flex items-center justify-center p-3"
+                onClick={() => handleOpenDetails(p)}
+              >
+                <img src={p.image} alt={p.nameBangla} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10">
+                  <span className="bg-black text-white text-[9px] uppercase tracking-wider font-bold px-2 py-0.5">
+                    {p.badge}
+                  </span>
+                </div>
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleToggleWishlist(p.id);
+                  }}
+                  className={`absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-sm shadow-sm hover:scale-110 transition-transform ${isWished ? 'text-rose-600' : 'text-stone-700'}`}
+                  title={isWished ? 'Remove from wishlist' : 'Add to wishlist'}
+                >
+                  {isWished ? '♥' : '♡'}
+                </button>
+              </div>
+
+              <div className="p-4 text-left">
+                <p className="text-[10px] tracking-widest uppercase text-stone-400 font-semibold mb-1">
+                  {p.category.toUpperCase()}
+                </p>
+                <h3 
+                  onClick={() => handleOpenDetails(p)}
+                  className="font-bangla font-semibold text-stone-900 text-sm sm:text-base leading-snug hover:text-black cursor-pointer line-clamp-1 mb-0.5"
+                >
+                  {p.nameBangla}
+                </h3>
+                <p className="text-[11px] text-stone-400 tracking-wide uppercase truncate mb-2">{p.nameEnglish}</p>
+                <div className="flex items-baseline gap-2 mb-3">
+                  <span className="text-base font-bold text-stone-950 font-bangla">৳{p.price.toLocaleString('bn-BD')}</span>
+                  {p.originalPrice && <span className="text-xs text-stone-400 line-through font-bangla">৳{p.originalPrice.toLocaleString('bn-BD')}</span>}
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 pt-0">
+              <button 
+                onClick={() => handleAddToCart(p)}
+                className="w-full bg-black hover:bg-stone-800 text-white text-[11px] font-bold uppercase tracking-widest py-3 rounded-none transition-colors active:scale-95 shadow-sm"
+              >
+                ADD TO CART
+              </button>
+            </div>
+          </div>
+        );
+      };
+
+      return (
+        <div className="min-h-screen flex flex-col justify-between bg-white text-stone-900 font-sans">
+          
+          {/* MAIN NAVBAR */}
+          <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200">
+            <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 h-20 flex items-center justify-between gap-4">
+              
+              {/* Brand Logo - Clicking goes to Home */}
+              <div className="flex items-center gap-3">
+                <button 
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="lg:hidden p-2 text-stone-800 hover:text-black"
+                >
+                  ☰
+                </button>
+                <div onClick={navigateToHome} className="flex flex-col items-start cursor-pointer">
+                  <span className="font-brand text-3xl sm:text-4xl font-bold tracking-[0.2em] text-[#222429] leading-none uppercase">
+                    ABHA
+                  </span>
+                  <span className="text-[8px] sm:text-[9px] tracking-[0.28em] text-stone-500 font-semibold uppercase mt-1 leading-none">
+                    THE GLOW OF NEW TRENDS
+                  </span>
+                </div>
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="hidden lg:flex items-center gap-8 text-[12px] uppercase tracking-[0.16em] font-semibold text-stone-700">
+                <button 
+                  onClick={navigateToHome} 
+                  className={`py-1 hover:text-black ${currentPage.type === 'home' ? 'border-b-2 border-black text-black' : ''}`}
+                >
+                  HOME
+                </button>
+
+                {/* COLLECTIONS Dropdown Menu */}
+                <div className="relative group py-1">
+                  <button 
+                    onClick={() => {
+                      navigateToHome();
+                      setTimeout(() => {
+                        document.getElementById('shop-by-category')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }} 
+                    className="hover:text-black transition-colors flex items-center gap-1 group-hover:border-b-2 group-hover:border-black pb-0.5 cursor-pointer"
+                  >
+                    <span>COLLECTIONS</span>
+                    <svg className="w-3.5 h-3.5 text-stone-400 group-hover:text-black transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  <div className="absolute left-0 top-full mt-2 w-52 bg-white border border-stone-200 shadow-xl py-2 z-50 hidden group-hover:block transition-all">
+                    <button 
+                      onClick={() => navigateToCategoryPage('panjabi')} 
+                      className="w-full text-left px-4 py-2.5 text-xs hover:bg-stone-50 text-stone-700 hover:text-black font-semibold flex items-center justify-between"
+                    >
+                      <span>PANJABI & KABLI</span>
+                      <span className="text-[10px] text-stone-400">→</span>
+                    </button>
+                    <button 
+                      onClick={() => navigateToCategoryPage('jubbah')} 
+                      className="w-full text-left px-4 py-2.5 text-xs hover:bg-stone-50 text-stone-700 hover:text-black font-semibold flex items-center justify-between"
+                    >
+                      <span>ARABIAN JUBBAH</span>
+                      <span className="text-[10px] text-stone-400">→</span>
+                    </button>
+                    <button 
+                      onClick={() => navigateToCategoryPage('attar')} 
+                      className="w-full text-left px-4 py-2.5 text-xs hover:bg-stone-50 text-stone-700 hover:text-black font-semibold flex items-center justify-between"
+                    >
+                      <span>ARTISANAL ATTAR & OUD</span>
+                      <span className="text-[10px] text-stone-400">→</span>
+                    </button>
+                    <button 
+                      onClick={() => navigateToCategoryPage('tshirt')} 
+                      className="w-full text-left px-4 py-2.5 text-xs hover:bg-stone-50 text-stone-700 hover:text-black font-semibold flex items-center justify-between"
+                    >
+                      <span>MINIMAL T-SHIRTS</span>
+                      <span className="text-[10px] text-stone-400">→</span>
+                    </button>
+                    <div className="border-t border-stone-100 mt-1 pt-1">
+                      <button 
+                        onClick={() => {
+                          navigateToHome();
+                          setTimeout(() => {
+                            document.getElementById('shop-by-category')?.scrollIntoView({ behavior: 'smooth' });
+                          }, 100);
+                        }} 
+                        className="w-full text-left px-4 py-2 text-[11px] font-bold text-black hover:bg-stone-100 uppercase"
+                      >
+                        VIEW ALL COLLECTIONS →
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <button 
+                  onClick={() => navigateToCategoryPage('panjabi')} 
+                  className={`py-1 hover:text-black ${currentPage.type === 'category' && currentPage.categoryId === 'panjabi' ? 'border-b-2 border-black text-black' : ''}`}
+                >
+                  PANJABI
+                </button>
+                <button 
+                  onClick={() => navigateToCategoryPage('jubbah')} 
+                  className={`py-1 hover:text-black ${currentPage.type === 'category' && currentPage.categoryId === 'jubbah' ? 'border-b-2 border-black text-black' : ''}`}
+                >
+                  JUBBAH
+                </button>
+                <button 
+                  onClick={() => navigateToCategoryPage('attar')} 
+                  className={`py-1 hover:text-black ${currentPage.type === 'category' && currentPage.categoryId === 'attar' ? 'border-b-2 border-black text-black' : ''}`}
+                >
+                  ATTAR & OUD
+                </button>
+                <button 
+                  onClick={() => navigateToCategoryPage('tshirt')} 
+                  className={`py-1 hover:text-black ${currentPage.type === 'category' && currentPage.categoryId === 'tshirt' ? 'border-b-2 border-black text-black' : ''}`}
+                >
+                  T-SHIRTS
+                </button>
+                <button onClick={() => setIsSizeAdvisorOpen(true)} className="text-stone-400 hover:text-black py-1">
+                  SIZE GUIDE
+                </button>
+              </nav>
+
+              {/* Right Action Icons */}
+              <div className="flex items-center gap-3 sm:gap-4 text-stone-800">
+                <input 
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    if (currentPage.type !== 'home') setCurrentPage({ type: 'home' });
+                  }}
+                  placeholder="Search collection..."
+                  className="hidden sm:block w-36 md:w-48 bg-stone-50 text-xs py-1.5 px-3 border border-stone-200 focus:outline-none focus:border-black rounded-none"
+                />
+
+                <div 
+                  onClick={() => showToast('উইশলিস্ট দেখতে হার্ট আইকন ক্লিক করুন')}
+                  className="relative p-2 cursor-pointer hover:text-black text-sm"
+                  title="Wishlist"
+                >
+                  ♡
+                  {wishlist.length > 0 && (
+                    <span className="absolute top-0.5 right-0.5 bg-black text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                      {wishlist.length}
+                    </span>
+                  )}
+                </div>
+
+                <button 
+                  onClick={() => setIsCartOpen(true)}
+                  className="relative p-2 hover:text-black transition-colors"
+                  title="Cart"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
+                  <span className="absolute top-0.5 right-0.5 bg-black text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                    {totalCartCount}
+                  </span>
+                </button>
+              </div>
+            </div>
+          </header>
+
+          {/* MAIN BODY: CONDITIONALLY RENDER HOME OR DEDICATED CATEGORY PAGE */}
+          <main className="flex-1">
+            {currentPage.type === 'category' ? (
+              /* ================= DEDICATED CATEGORY PAGE ================= */
+              <div className="bg-white min-h-screen pb-20">
+                
+                {/* Breadcrumb Navigation - Clickable COLLECTIONS with dropdown */}
+                <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 pt-6 pb-4">
+                  <div className="flex items-center gap-2 text-xs text-stone-400 uppercase tracking-widest relative">
+                    <button onClick={navigateToHome} className="hover:text-black transition-colors">HOME</button>
+                    <span>/</span>
+                    
+                    <div className="relative group inline-block">
+                      <button 
+                        onClick={() => {
+                          navigateToHome();
+                          setTimeout(() => {
+                            document.getElementById('shop-by-category')?.scrollIntoView({ behavior: 'smooth' });
+                          }, 100);
+                        }}
+                        className="text-stone-600 hover:text-black hover:underline transition-colors flex items-center gap-1 font-semibold cursor-pointer"
+                        title="View all collections"
+                      >
+                        <span>COLLECTIONS</span>
+                        <svg className="w-3.5 h-3.5 text-stone-400 group-hover:text-black transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+
+                      <div className="absolute left-0 top-full mt-1.5 w-52 bg-white border border-stone-200 shadow-xl py-2 z-50 hidden group-hover:block transition-all">
+                        <div className="px-3 py-1.5 text-[10px] text-stone-400 font-bold uppercase tracking-widest border-b border-stone-100">
+                          ALL COLLECTIONS
+                        </div>
+                        <button 
+                          onClick={() => navigateToCategoryPage('panjabi')}
+                          className={`w-full text-left px-3 py-2 text-xs hover:bg-stone-50 flex items-center justify-between transition-colors ${currentPage.categoryId === 'panjabi' ? 'font-bold text-black bg-stone-50' : 'text-stone-700'}`}
+                        >
+                          <span>PANJABI & KABLI</span>
+                          {currentPage.categoryId === 'panjabi' && <span className="text-black text-xs font-bold">✓</span>}
+                        </button>
+                        <button 
+                          onClick={() => navigateToCategoryPage('jubbah')}
+                          className={`w-full text-left px-3 py-2 text-xs hover:bg-stone-50 flex items-center justify-between transition-colors ${currentPage.categoryId === 'jubbah' ? 'font-bold text-black bg-stone-50' : 'text-stone-700'}`}
+                        >
+                          <span>ARABIAN JUBBAH</span>
+                          {currentPage.categoryId === 'jubbah' && <span className="text-black text-xs font-bold">✓</span>}
+                        </button>
+                        <button 
+                          onClick={() => navigateToCategoryPage('attar')}
+                          className={`w-full text-left px-3 py-2 text-xs hover:bg-stone-50 flex items-center justify-between transition-colors ${currentPage.categoryId === 'attar' ? 'font-bold text-black bg-stone-50' : 'text-stone-700'}`}
+                        >
+                          <span>ARTISANAL ATTAR & OUD</span>
+                          {currentPage.categoryId === 'attar' && <span className="text-black text-xs font-bold">✓</span>}
+                        </button>
+                        <button 
+                          onClick={() => navigateToCategoryPage('tshirt')}
+                          className={`w-full text-left px-3 py-2 text-xs hover:bg-stone-50 flex items-center justify-between transition-colors ${currentPage.categoryId === 'tshirt' ? 'font-bold text-black bg-stone-50' : 'text-stone-700'}`}
+                        >
+                          <span>MINIMAL T-SHIRTS</span>
+                          {currentPage.categoryId === 'tshirt' && <span className="text-black text-xs font-bold">✓</span>}
+                        </button>
+                        <div className="border-t border-stone-100 mt-1 pt-1">
+                          <button 
+                            onClick={() => {
+                              navigateToHome();
+                              setTimeout(() => {
+                                document.getElementById('shop-by-category')?.scrollIntoView({ behavior: 'smooth' });
+                              }, 100);
+                            }}
+                            className="w-full text-left px-3 py-1.5 text-[11px] font-bold text-black hover:bg-stone-100 uppercase"
+                          >
+                            VIEW OVERVIEW →
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <span>/</span>
+                    <span className="text-black font-bold">
+                      {categoryTitles[currentPage.categoryId]?.title || 'COLLECTION'}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Category Header */}
+                <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-8 border-b border-stone-200">
+                  <div className="max-w-3xl">
+                    <span className="text-[10px] tracking-[0.3em] font-bold text-stone-400 uppercase block mb-1">
+                      OFFICIAL COLLECTION
+                    </span>
+                    <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-stone-950 uppercase mb-2">
+                      {categoryTitles[currentPage.categoryId]?.title}
+                    </h1>
+                    <p className="text-sm font-bangla text-stone-600 leading-relaxed">
+                      {categoryTitles[currentPage.categoryId]?.desc}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Filter and Product Grid */}
+                <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-6">
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-4 border-b border-stone-100 mb-8">
+                    <div className="text-xs text-stone-500 tracking-wider uppercase font-semibold">
+                      SHOWING <strong className="text-black">{currentCategoryProducts.length}</strong> PRODUCTS
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                      {currentPage.categoryId !== 'attar' && (
+                        <div className="flex items-center gap-1 text-xs">
+                          <span className="text-stone-400 uppercase tracking-wider text-[11px] mr-1">SIZE:</span>
+                          {['all', 'M', 'L', 'XL', 'XXL'].map((sz) => (
+                            <button
+                              key={sz}
+                              onClick={() => setCategoryPageSize(sz)}
+                              className={`px-2.5 py-1 text-xs uppercase font-bold border transition-colors ${
+                                categoryPageSize === sz
+                                  ? 'border-black bg-black text-white'
+                                  : 'border-stone-200 bg-white text-stone-600 hover:border-black'
+                              }`}
+                            >
+                              {sz}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+
+                      <select
+                        value={categoryPageSort}
+                        onChange={(e) => setCategoryPageSort(e.target.value)}
+                        className="bg-stone-50 border border-stone-200 text-stone-800 text-xs py-2 px-3 focus:outline-none focus:border-black rounded-none"
+                      >
+                        <option value="popular">Popularity</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                        <option value="rating">Top Rated</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Grid - Wide screen filling */}
+                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
+                    {currentCategoryProducts.map((p) => {
+                      const isWished = wishlist.includes(p.id);
+                      return (
+                        <div key={p.id} className="group bg-white rounded-none border border-stone-100 flex flex-col justify-between hover:shadow-lg transition-all duration-300">
+                          <div>
+                            <div 
+                              className="relative aspect-[4/5] bg-[#f8f8f8] overflow-hidden cursor-pointer flex items-center justify-center p-3"
+                              onClick={() => handleOpenDetails(p)}
+                            >
+                              <img src={p.image} alt={p.nameBangla} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                              <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10">
+                                <span className="bg-black text-white text-[9px] uppercase tracking-wider font-bold px-2 py-0.5">
+                                  {p.badge}
+                                </span>
+                              </div>
+                              <button 
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleToggleWishlist(p.id);
+                                }}
+                                className="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white flex items-center justify-center text-sm shadow-sm hover:scale-110"
+                              >
+                                {isWished ? '♥' : '♡'}
+                              </button>
+                            </div>
+
+                            <div className="p-4 text-left">
+                              <p className="text-[10px] tracking-widest uppercase text-stone-400 font-semibold mb-1">
+                                {p.category.toUpperCase()}
+                              </p>
+                              <h3 
+                                onClick={() => handleOpenDetails(p)}
+                                className="font-bangla font-semibold text-stone-900 text-sm sm:text-base leading-snug hover:text-black cursor-pointer line-clamp-1 mb-0.5"
+                              >
+                                {p.nameBangla}
+                              </h3>
+                              <p className="text-[11px] text-stone-400 tracking-wide uppercase truncate mb-2">{p.nameEnglish}</p>
+                              <div className="flex items-baseline gap-2 mb-3">
+                                <span className="text-base font-bold text-stone-950 font-bangla">৳{p.price.toLocaleString('bn-BD')}</span>
+                                {p.originalPrice && <span className="text-xs text-stone-400 line-through font-bangla">৳{p.originalPrice.toLocaleString('bn-BD')}</span>}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="p-4 pt-0">
+                            <button 
+                              onClick={() => handleAddToCart(p)}
+                              className="w-full bg-black hover:bg-stone-800 text-white text-[11px] font-bold uppercase tracking-widest py-3 rounded-none transition-colors active:scale-95 shadow-sm"
+                            >
+                              ADD TO CART
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <div className="mt-16 pt-8 border-t border-stone-200 text-center">
+                    <button 
+                      onClick={navigateToHome}
+                      className="border border-stone-300 hover:border-black text-black text-xs font-bold uppercase tracking-widest px-8 py-3.5 rounded-none transition-colors"
+                    >
+                      ← BACK TO HOME
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* ================= HOMEPAGE ================= */
+              <>
+                {/* Hero Section - High-Fashion Editorial Luxury */}
+                <section className="relative bg-[#090a0d] text-white overflow-hidden border-b border-stone-800">
+                  
+                  {/* Subtle Ambient Radial Glow for High-Fashion Atmosphere */}
+                  <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+                  <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-stone-700/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+                  <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[580px] lg:min-h-[640px] py-12 lg:py-8">
+                      
+                      {/* Left Content Column: Editorial Typography */}
+                      <div className="lg:col-span-7 flex flex-col justify-center">
+                        
+                        {/* High-Fashion Editorial Headline */}
+                        <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tight text-white leading-[0.98] mb-5">
+                          {activeHeroLook === 0 && (
+                            <>TIMELESS <span className="font-serif italic font-normal text-amber-200/90 lowercase">Glow.</span><br /><span className="tracking-tighter bg-gradient-to-r from-white via-stone-200 to-stone-400 bg-clip-text text-transparent">CURATED LUXURY</span></>
+                          )}
+                          {activeHeroLook === 1 && (
+                            <>DIGNIFIED <span className="font-serif italic font-normal text-amber-200/90 lowercase">Thobe.</span><br /><span className="tracking-tighter bg-gradient-to-r from-white via-stone-200 to-stone-400 bg-clip-text text-transparent">SILKY MATTE</span></>
+                          )}
+                          {activeHeroLook === 2 && (
+                            <>OVERSIZED <span className="font-serif italic font-normal text-amber-200/90 lowercase">Minimal.</span><br /><span className="tracking-tighter bg-gradient-to-r from-white via-stone-200 to-stone-400 bg-clip-text text-transparent">HEAVYWEIGHT TEE</span></>
+                          )}
+                        </h1>
+
+                        {/* Sub-Headline: Bengali & English Elegance */}
+                        <div className="space-y-1.5 max-w-xl mb-8">
+                          <p className="text-stone-300 text-xs sm:text-sm font-bangla leading-relaxed">
+                            {[
+                              'ঐতিহ্যের রাজকীয় আভিজাত্য ও আধুনিক কাটিং—প্রিমিয়াম হ্যান্ডলুম ও জ্যাকোয়ার্ড সুতির নিখুঁত পাঞ্জাবি সম্ভার।',
+                              'সংযুক্ত আরব আমিরাত ও মরক্কোর ঐতিহ্যবাহী রিংকেল-ফ্রি প্রিমিয়াম সিল্কি ম্যাট ফেব্রিকের তৈরি জুব্বা।',
+                              '২৪০ জিএসএম ড্রপ-শোল্ডার কম্বড সুপীমা কটন—দৈনন্দিন আরাম ও রুচিশীল আধুনিক আউটলুক।'
+                            ][activeHeroLook]}
+                          </p>
+                          <p className="text-stone-400 text-[11px] sm:text-xs font-sans tracking-wide uppercase">
+                            {[
+                              'Pure Egyptian Jacquard & Handcrafted Embroidery. Made for the Modern Gentleman.',
+                              'Wrinkle-Free Breathable Fabric tailored for Jumu\'ah, Umrah & Daily Elegance.',
+                              '240 GSM Combed Ring-Spun Cotton with High-Density Ribbed Collar.'
+                            ][activeHeroLook]}
+                          </p>
+                        </div>
+
+                        {/* Single Clean Action Button */}
+                        <div className="mb-8">
+                          <button 
+                            onClick={() => document.getElementById('trending-now')?.scrollIntoView({ behavior: 'smooth' })}
+                            className="bg-white hover:bg-stone-200 text-black font-black text-xs uppercase tracking-[0.2em] px-8 py-4 shadow-xl transition-all hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 group"
+                          >
+                            <span>SHOP THE COLLECTION</span>
+                            <span className="group-hover:translate-x-1 transition-transform">➔</span>
+                          </button>
+                        </div>
+
+                        {/* Trust Badges Strip */}
+                        <div className="flex flex-wrap items-center gap-6 pt-5 border-t border-stone-800/80 text-[11px] text-stone-400 font-bangla">
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-amber-400 font-bold">✓</span>
+                            <span>সারা বাংলাদেশে ক্যাশ অন ডেলিভারি</span>
+                          </div>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-amber-400 font-bold">✓</span>
+                            <span>৭ দিনের সহজ রিটার্ন ও এক্সচেঞ্জ</span>
+                          </div>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-amber-400 font-bold">✓</span>
+                            <span>১০০% খাঁটি লাক্সারি ফেব্রিক গ্যারান্টি</span>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      {/* Right Visual Column: Frameless Male Model Showcase (Blends seamlessly into hero) */}
+                      <div className="lg:col-span-5 relative flex items-center justify-center lg:justify-end">
+                        
+                        {/* Frameless Container - No border, no box shadow, no frame */}
+                        <div className="relative w-full max-w-sm sm:max-w-md aspect-[3/4] sm:aspect-[4/5] flex items-center justify-center">
+                          
+                          {[
+                            { id: 'panjabi', img: 'assets/images/panjabi.jpg', name: 'Royal Jacquard Ivory Panjabi' },
+                            { id: 'jubbah', img: 'assets/images/jubbah.jpg', name: 'Emirati Silky White Jubbah' },
+                            { id: 'tshirt', img: 'assets/images/tshirt.jpg', name: 'Mocha Heavyweight Oversized Tee' }
+                          ].map((look, idx) => (
+                            <div 
+                              key={look.id}
+                              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                                activeHeroLook === idx ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                              }`}
+                            >
+                              <img 
+                                src={look.img} 
+                                alt={look.name} 
+                                className="w-full h-full object-cover object-top filter contrast-[1.04] brightness-[1.02]"
+                              />
+                              
+                              {/* Seamless edge blending gradients: melts image borders into the dark hero background */}
+                              <div className="absolute inset-y-0 left-0 w-24 sm:w-36 bg-gradient-to-r from-[#090a0d] via-[#090a0d]/60 to-transparent pointer-events-none"></div>
+                              <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-gradient-to-t from-[#090a0d] via-[#090a0d]/70 to-transparent pointer-events-none"></div>
+                              <div className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-b from-[#090a0d] to-transparent pointer-events-none"></div>
+                              <div className="absolute inset-y-0 right-0 w-16 sm:w-20 bg-gradient-to-l from-[#090a0d] via-[#090a0d]/40 to-transparent pointer-events-none"></div>
+                            </div>
+                          ))}
+
+                          {/* Minimal 5-second slide indicator bars */}
+                          <div className="absolute bottom-2 z-20 flex items-center gap-2">
+                            {[0, 1, 2].map((idx) => (
+                              <button
+                                key={idx}
+                                onClick={() => setActiveHeroLook(idx)}
+                                className={`h-1 transition-all duration-500 rounded-full ${
+                                  activeHeroLook === idx ? 'w-8 bg-amber-400' : 'w-2 bg-white/30 hover:bg-white/60'
+                                }`}
+                                aria-label={`Slide ${idx + 1}`}
+                              />
+                            ))}
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </section>
+
+                {/* 4-Item Feature Strip (Minimal Line Icons) */}
+                <section className="bg-white border-b border-stone-200 py-6">
+                  <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                      <div className="flex items-center gap-3.5">
+                        <svg className="w-6 h-6 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.3">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M16 3H1v13h15V3zM16 8h4.5l2.5 3v5h-7V8z" />
+                          <circle cx="5.5" cy="18.5" r="2.5" />
+                          <circle cx="18.5" cy="18.5" r="2.5" />
+                        </svg>
+                        <div>
+                          <h4 className="text-xs font-bold text-stone-900 uppercase tracking-wider">FREE SHIPPING</h4>
+                          <p className="text-[11px] text-stone-500 font-sans">On all orders above ৳3,000</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3.5">
+                        <svg className="w-6 h-6 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.3">
+                          <circle cx="12" cy="9" r="6" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l2 2 4-4M8.5 14.5L7 22l5-2.5 5 2.5-1.5-7.5" />
+                        </svg>
+                        <div>
+                          <h4 className="text-xs font-bold text-stone-900 uppercase tracking-wider">PREMIUM QUALITY</h4>
+                          <p className="text-[11px] text-stone-500 font-sans">Handpicked & quality checked</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3.5">
+                        <svg className="w-6 h-6 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.3">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h5M20 20v-5h-5M4 9a8 8 0 0113.65-4.65L20 7M20 15a8 8 0 01-13.65 4.65L4 17" />
+                        </svg>
+                        <div>
+                          <h4 className="text-xs font-bold text-stone-900 uppercase tracking-wider">EASY RETURNS</h4>
+                          <p className="text-[11px] text-stone-500 font-sans">Hassle free 7-day exchange</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3.5">
+                        <svg className="w-6 h-6 text-stone-900 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.3">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3 18v-6a9 9 0 0118 0v6M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3v5zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5z" />
+                        </svg>
+                        <div>
+                          <h4 className="text-xs font-bold text-stone-900 uppercase tracking-wider">24/7 SUPPORT</h4>
+                          <p className="text-[11px] text-stone-500 font-sans">We're here to help anytime</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                {/* SHOP BY CATEGORY - Wide screen filling */}
+                <section id="shop-by-category" className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-16 scroll-mt-20">
+                  <div className="text-center mb-10">
+                    <h2 className="text-xl sm:text-2xl font-bold font-sans tracking-[0.2em] uppercase">
+                      SHOP BY CATEGORY
+                    </h2>
+                    <div className="w-10 h-0.5 bg-black mx-auto mt-2"></div>
+                  </div>
+
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                    {[
+                      { id: 'panjabi', title: 'PANJABI', bangla: 'পাঞ্জাবি ও কাবলি', img: 'assets/images/panjabi.jpg' },
+                      { id: 'jubbah', title: 'JUBBAH', bangla: 'অ্যারাবিয়ান জুব্বা', img: 'assets/images/jubbah.jpg' },
+                      { id: 'attar', title: 'ATTAR & OUD', bangla: 'খাঁটি আতর ও সুবাস', img: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80' },
+                      { id: 'tshirt', title: 'T-SHIRTS', bangla: 'মিনিমাল টি-শার্ট', img: 'assets/images/tshirt.jpg' }
+                    ].map((c) => (
+                      <div 
+                        key={c.id}
+                        onClick={() => navigateToCategoryPage(c.id)}
+                        className="group relative rounded-none overflow-hidden aspect-[3/4] bg-stone-900 cursor-pointer shadow-sm hover:shadow-md transition-all"
+                      >
+                        <img src={c.img} alt={c.title} className="w-full h-full object-cover object-top opacity-90 group-hover:scale-105 group-hover:opacity-80 transition-all duration-500" />
+                        <div className="absolute inset-0 bg-black/35 group-hover:bg-black/45 transition-colors flex flex-col items-center justify-center p-4 text-center">
+                          <h3 className="text-sm sm:text-base font-bold text-white tracking-[0.2em] uppercase font-sans mb-1 drop-shadow-sm">{c.title}</h3>
+                          <p className="text-[11px] text-stone-200 font-bangla mb-3 opacity-95">{c.bangla}</p>
+                          <span className="text-[10px] tracking-[0.2em] font-bold text-white uppercase border-b border-white pb-0.5 group-hover:text-amber-200 group-hover:border-amber-200 transition-colors">
+                            SHOP NOW
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                {/* TRENDING NOW Section with Smooth Right-to-Left Product Animation */}
+                <section id="trending-now" className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-14 scroll-mt-20">
+                  <div className="text-center mb-8">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-stone-100 text-stone-800 text-[10px] font-bold uppercase tracking-[0.2em] mb-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                      LIVE SHOWCASE — ANIMATING RIGHT TO LEFT
+                    </div>
+                    <h2 className="text-xl sm:text-3xl font-bold font-sans tracking-[0.2em] text-stone-900 uppercase">
+                      TRENDING NOW
+                    </h2>
+                    <div className="w-10 h-0.5 bg-stone-900 mx-auto mt-2"></div>
+                  </div>
+
+                  {/* Minimal Tab Filters, View Modes & Controls */}
+                  <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-stone-200 mb-8">
+                    {/* Category Filter Tabs */}
+                    <div className="flex items-center gap-2 overflow-x-auto text-[11px] uppercase tracking-wider font-semibold w-full md:w-auto">
+                      {[
+                        { id: 'all', label: 'All Items' },
+                        { id: 'panjabi', label: 'Panjabi' },
+                        { id: 'jubbah', label: 'Jubbah' },
+                        { id: 'attar', label: 'Attar & Oud' },
+                        { id: 'tshirt', label: 'T-Shirts' }
+                      ].map((tab) => (
+                        <button
+                          key={tab.id}
+                          onClick={() => setActiveCategory(tab.id)}
+                          className={`py-2 px-4 whitespace-nowrap transition-all rounded-none ${
+                            activeCategory === tab.id
+                              ? 'bg-black text-white font-bold'
+                              : 'bg-stone-50 text-stone-600 hover:text-black hover:bg-stone-100'
+                          }`}
+                        >
+                          {tab.label}
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Right Controls: Mode Toggle & Sort */}
+                    <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
+                      
+                      {/* Slider vs Grid Toggle */}
+                      <div className="flex items-center border border-stone-200 bg-stone-50 p-0.5">
+                        <button
+                          onClick={() => setDisplayMode('slider')}
+                          className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5 ${
+                            displayMode === 'slider' ? 'bg-black text-white' : 'text-stone-600 hover:text-black'
+                          }`}
+                          title="Continuous Right to Left Animation"
+                        >
+                          <span>▶ AUTO-SCROLL (RTL)</span>
+                        </button>
+                        <button
+                          onClick={() => setDisplayMode('grid')}
+                          className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5 ${
+                            displayMode === 'grid' ? 'bg-black text-white' : 'text-stone-600 hover:text-black'
+                          }`}
+                          title="Classic Grid View"
+                        >
+                          <span>▦ GRID VIEW</span>
+                        </button>
+                      </div>
+
+                      {displayMode === 'slider' && (
+                        <button
+                          onClick={() => setIsAutoScrollPaused(!isAutoScrollPaused)}
+                          className="text-xs px-2.5 py-1.5 border border-stone-200 hover:border-black font-semibold uppercase tracking-wider bg-white transition-colors"
+                          title={isAutoScrollPaused ? 'Resume auto-scroll' : 'Pause auto-scroll'}
+                        >
+                          {isAutoScrollPaused ? '▶ PLAY' : '⏸ PAUSE'}
+                        </button>
+                      )}
+
+                      <select
+                        value={activeSort}
+                        onChange={(e) => setActiveSort(e.target.value)}
+                        className="bg-stone-50 border border-stone-200 text-stone-800 text-xs py-2 px-3 focus:outline-none focus:border-black cursor-pointer rounded-none"
+                      >
+                        <option value="popular">Popularity</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                        <option value="rating">Top Rated</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Mode 1: RIGHT-TO-LEFT ANIMATED MARQUEE / SLIDER */}
+                  {displayMode === 'slider' ? (
+                    <div className="relative overflow-hidden w-full py-4 group">
+                      {/* Subtle fade edges for luxury feel */}
+                      <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+                      <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+                      {/* Infinite Marquee Track Moving Right to Left */}
+                      <div 
+                        className="flex gap-6 w-max"
+                        style={{
+                          animation: isAutoScrollPaused ? 'none' : 'marqueeRTL 36s linear infinite'
+                        }}
+                        onMouseEnter={() => setIsAutoScrollPaused(true)}
+                        onMouseLeave={() => setIsAutoScrollPaused(false)}
+                      >
+                        {/* Render duplicated list for continuous smooth looping */}
+                        {[...homeFilteredProducts, ...homeFilteredProducts].map((product, idx) => (
+                          <div 
+                            key={`${product.id}-${idx}`} 
+                            className="w-[270px] sm:w-[300px] lg:w-[320px] flex-shrink-0"
+                          >
+                            {renderProductCard(product, `${product.id}-${idx}`)}
+                          </div>
+                        ))}
+                      </div>
+
+                      <p className="text-center text-xs text-stone-400 font-bangla mt-6 flex items-center justify-center gap-1.5">
+                        <span>💡 মাউস কার্ডের ওপর নিলে অ্যানিমেশন থামবে, সহজে "ADD TO CART" করতে পারবেন।</span>
+                      </p>
+                    </div>
+                  ) : (
+                    /* Mode 2: CLASSIC GRID VIEW */
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
+                      {homeFilteredProducts.map((product) => renderProductCard(product, product.id))}
+                    </div>
+                  )}
+                </section>
+
+                {/* 3-Box Promo Banner - Wide screen filling */}
+                <section className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-12">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="relative bg-[#16171b] text-white p-6 sm:p-8 flex flex-col justify-between min-h-[220px] overflow-hidden group">
+                      <div className="z-10">
+                        <span className="text-[10px] tracking-[0.25em] text-stone-400 font-bold uppercase block mb-1">NEW DROPS</span>
+                        <h3 className="text-xl font-bold font-sans tracking-wide mb-2 uppercase">EVERY WEEK</h3>
+                        <p className="text-xs text-stone-400 font-bangla mb-4">নতুন সব সুন্নাহ ও লাক্সারি কালেকশন</p>
+                      </div>
+                      <div className="z-10">
+                        <button 
+                          onClick={() => navigateToCategoryPage('panjabi')}
+                          className="bg-white text-black text-[11px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-none hover:bg-stone-200"
+                        >
+                          EXPLORE PANJABI
+                        </button>
+                      </div>
+                      <img src="assets/images/panjabi.jpg" alt="" className="absolute right-0 top-0 w-1/2 h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+
+                    <div className="relative bg-[#1d1e24] text-white p-6 sm:p-8 flex flex-col justify-between min-h-[220px] overflow-hidden group">
+                      <div className="z-10">
+                        <span className="text-[10px] tracking-[0.25em] text-stone-400 font-bold uppercase block mb-1">ARTISANAL OUD</span>
+                        <h3 className="text-xl font-bold font-sans tracking-wide mb-2 uppercase">PURE EXTRACTS</h3>
+                        <p className="text-xs text-stone-400 font-bangla mb-4">কম্বোডিয়ান আগরউড ও রাজকীয় মাস্ক</p>
+                      </div>
+                      <div className="z-10">
+                        <button 
+                          onClick={() => navigateToCategoryPage('attar')}
+                          className="bg-white text-black text-[11px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-none hover:bg-stone-200"
+                        >
+                          EXPLORE OUD
+                        </button>
+                      </div>
+                      <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80" alt="" className="absolute right-0 top-0 w-1/2 h-full object-cover opacity-25 group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+
+                    <div className="relative bg-[#111216] text-white p-6 sm:p-8 flex flex-col justify-between min-h-[220px] overflow-hidden group">
+                      <div className="z-10">
+                        <span className="text-[10px] tracking-[0.25em] text-red-400 font-bold uppercase block mb-1">UP TO ৳১,৩০০ OFF</span>
+                        <h3 className="text-xl font-bold font-sans tracking-wide mb-2 uppercase">JUMU'AH BUNDLE</h3>
+                        <p className="text-xs text-stone-400 font-bangla mb-4">পাঞ্জাবি + পায়জামা + ৬মিলি উদ আতর</p>
+                      </div>
+                      <div className="z-10">
+                        <button 
+                          onClick={() => {
+                            const pj = products.find(x => x.id === 'pj-01');
+                            const at = products.find(x => x.id === 'at-01');
+                            if (pj) handleAddToCart(pj, 'L (40)', 'Pure Ivory White');
+                            if (at) handleAddToCart(at, '6ml', 'Golden Amber Essence');
+                          }}
+                          className="bg-white text-black text-[11px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-none hover:bg-stone-200"
+                        >
+                          SHOP BUNDLE
+                        </button>
+                      </div>
+                      <img src="assets/images/jubbah.jpg" alt="" className="absolute right-0 top-0 w-1/2 h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+                  </div>
+                </section>
+              </>
+            )}
+          </main>
+
+          {/* Modals & Cart Drawer */}
+          {selectedProduct && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+              <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedProduct(null)}></div>
+              <div className="relative bg-white max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 z-10">
+                <button onClick={() => setSelectedProduct(null)} className="absolute top-4 right-4 text-stone-400 text-xl font-bold">✕</button>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <img src={selectedProduct.image} alt={selectedProduct.nameBangla} className="w-full aspect-[4/5] object-cover bg-stone-100" />
+                  <div className="flex flex-col justify-between">
+                    <div>
+                      <h2 className="text-2xl font-bold text-stone-900 font-bangla">{selectedProduct.nameBangla}</h2>
+                      <p className="text-xs text-stone-400 tracking-wide uppercase mb-2">{selectedProduct.nameEnglish}</p>
+                      <div className="text-2xl font-bold text-stone-950 font-bangla mb-3">৳{selectedProduct.price.toLocaleString('bn-BD')}</div>
+                      <p className="text-xs text-stone-600 font-bangla leading-relaxed mb-4">{selectedProduct.description}</p>
+                      
+                      {selectedProduct.fragranceNotes && (
+                        <div className="p-3 bg-stone-50 border border-stone-200 text-xs font-bangla space-y-1 mb-4">
+                          <p><strong>টপ নোট:</strong> {selectedProduct.fragranceNotes.top}</p>
+                          <p><strong>হার্ট নোট:</strong> {selectedProduct.fragranceNotes.heart}</p>
+                          <p><strong>বেস নোট:</strong> {selectedProduct.fragranceNotes.base}</p>
+                          <p className="font-bold pt-1">⏱️ স্থায়িত্ব: {selectedProduct.fragranceNotes.longevity}</p>
+                        </div>
+                      )}
+
+                      {selectedProduct.sizes && (
+                        <div className="mb-4">
+                          <label className="block text-xs font-bold uppercase mb-1.5 font-bangla">সাইজ নির্বাচন করুন:</label>
+                          <div className="flex flex-wrap gap-2">
+                            {selectedProduct.sizes.map((s) => (
+                              <button
+                                key={s}
+                                onClick={() => setModalSize(s)}
+                                className={`text-xs py-1.5 px-3 border rounded-none font-bangla ${
+                                  modalSize === s ? 'bg-black text-white font-bold' : 'bg-white text-stone-700'
+                                }`}
+                              >
+                                {s}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <button 
+                      onClick={() => handleAddToCart(selectedProduct, modalSize, modalColor)}
+                      className="w-full bg-black text-white py-3.5 font-bold text-xs uppercase tracking-widest rounded-none shadow active:scale-95"
+                    >
+                      ADD TO CART
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Cart Drawer */}
+          {isCartOpen && (
+            <div className="fixed inset-0 z-50 flex justify-end">
+              <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsCartOpen(false)}></div>
+              <aside className="relative w-full max-w-md bg-white h-full shadow-2xl z-10 flex flex-col justify-between">
+                <div className="p-4 sm:p-5 border-b border-stone-200">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-bold text-stone-900 text-sm uppercase tracking-wider">YOUR CART ({totalCartCount})</h3>
+                    <button onClick={() => setIsCartOpen(false)} className="text-lg font-bold text-stone-400">✕</button>
+                  </div>
+                  <div className="mt-3 bg-stone-50 p-2.5 border border-stone-200 text-xs font-bangla">
+                    <p className="mb-1.5">
+                      {shipDiff <= 0 ? '🎉 অভিনন্দন! ফ্রি ডেলিভারি সক্রিয়!' : `আর মাত্র ৳${shipDiff} টাকার অর্ডারে ফ্রি ডেলিভারি!`}
+                    </p>
+                    <div className="w-full bg-stone-200 h-1.5 overflow-hidden">
+                      <div className="bg-black h-full" style={{ width: `${shipProgress}%` }}></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex-1 overflow-y-auto p-4 space-y-3">
+                  {cart.length === 0 ? (
+                    <div className="py-16 text-center text-stone-400 text-xs font-bangla">আপনার ব্যাগ খালি</div>
+                  ) : (
+                    cart.map((item, idx) => (
+                      <div key={idx} className="flex gap-3 py-2 border-b border-stone-100 last:border-b-0">
+                        <img src={item.image} alt="" className="w-14 h-16 object-cover bg-stone-100" />
+                        <div className="flex-1 flex flex-col justify-between">
+                          <div className="flex justify-between">
+                            <h4 className="font-semibold text-xs line-clamp-1 font-bangla">{item.nameBangla}</h4>
+                            <button onClick={() => handleRemoveCartItem(idx)} className="text-stone-400 hover:text-black text-xs">✕</button>
+                          </div>
+                          <p className="text-[11px] text-stone-500 font-bangla">সাইজ: {item.size}</p>
+                          <div className="flex justify-between items-center mt-1">
+                            <span className="font-bold text-xs font-bangla">৳{(item.price * item.quantity).toLocaleString('bn-BD')}</span>
+                            <div className="flex items-center border">
+                              <button onClick={() => handleUpdateQty(idx, -1)} className="px-2 py-0.5 text-xs">-</button>
+                              <span className="px-2 text-xs font-bold font-bangla">{item.quantity}</span>
+                              <button onClick={() => handleUpdateQty(idx, 1)} className="px-2 py-0.5 text-xs">+</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+
+                {cart.length > 0 && (
+                  <div className="p-4 border-t border-stone-200 bg-stone-50">
+                    <div className="flex justify-between text-sm font-bold mb-3 font-bangla">
+                      <span>সাব-টোটাল:</span>
+                      <span>৳{cartSubtotal.toLocaleString('bn-BD')}</span>
+                    </div>
+                    <button 
+                      onClick={() => {
+                        setIsCartOpen(false);
+                        setIsCheckoutOpen(true);
+                      }}
+                      className="w-full bg-black text-white font-bold py-3.5 text-xs uppercase tracking-widest rounded-none active:scale-95 shadow"
+                    >
+                      PROCEED TO CHECKOUT
+                    </button>
+                  </div>
+                )}
+              </aside>
+            </div>
+          )}
+
+          {/* Size Advisor Modal */}
+          {isSizeAdvisorOpen && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+              <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsSizeAdvisorOpen(false)}></div>
+              <div className="relative bg-white max-w-md w-full shadow-2xl p-6 z-10 text-xs font-bangla">
+                <button onClick={() => setIsSizeAdvisorOpen(false)} className="absolute top-4 right-4 text-stone-400 text-xl font-bold">✕</button>
+                <h3 className="font-bold text-stone-900 text-base mb-1">📏 স্মার্ট সাইজ সহায়ক</h3>
+                <p className="text-stone-500 mb-4">আপনার উচ্চতা ও ওজন দিন, সিস্টেম নিখুঁত সাইজ নির্ধারণ করবে।</p>
+                
+                <form onSubmit={handleCalculateSize} className="space-y-3">
+                  <div>
+                    <label className="block font-semibold mb-1">উচ্চতা:</label>
+                    <div className="grid grid-cols-2 gap-2">
+                      <select value={advisorFeet} onChange={(e) => setAdvisorFeet(e.target.value)} className="border p-2 rounded-none">
+                        <option value={5}>৫ ফুট</option>
+                        <option value={6}>৬ ফুট</option>
+                      </select>
+                      <select value={advisorInches} onChange={(e) => setAdvisorInches(e.target.value)} className="border p-2 rounded-none">
+                        <option value={4}>৪ ইঞ্চি</option>
+                        <option value={6}>৬ ইঞ্চি</option>
+                        <option value={8}>৮ ইঞ্চি</option>
+                        <option value={10}>১০ ইঞ্চি</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block font-semibold mb-1">ওজন (কেজি):</label>
+                    <input 
+                      type="number" 
+                      value={advisorWeight} 
+                      onChange={(e) => setAdvisorWeight(e.target.value)}
+                      className="w-full border p-2 rounded-none"
+                    />
+                  </div>
+                  <button type="submit" className="w-full bg-black text-white font-bold py-2.5 rounded-none uppercase tracking-wider">
+                    সাইজ চেক করুন
+                  </button>
+                </form>
+
+                {advisorResult && (
+                  <div className="p-3 bg-stone-100 border border-stone-200 mt-3 text-stone-900">
+                    <p className="font-bold">✓ প্রস্তাবিত সাইজ: {advisorResult.size}</p>
+                    <p className="text-[11px] mt-0.5">{advisorResult.note}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* 1-Click Checkout Modal */}
+          {isCheckoutOpen && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 font-bangla">
+              <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsCheckoutOpen(false)}></div>
+              <div className="relative bg-white max-w-lg w-full max-h-[95vh] overflow-y-auto shadow-2xl p-6 sm:p-8 z-10 text-xs">
+                <button onClick={() => setIsCheckoutOpen(false)} className="absolute top-4 right-4 text-stone-400 text-xl font-bold">✕</button>
+                <h3 className="font-bold text-stone-900 text-base mb-1 uppercase tracking-wide">১-ক্লিক দ্রুত অর্ডার</h3>
+                <p className="text-stone-500 mb-3">পাসওয়ার্ড ছাড়াই নাম ও ডেলিভারি ঠিকানা দিয়ে অর্ডার কনফার্ম করুন।</p>
+
+                {checkoutError && <p className="p-2 mb-2 bg-red-50 text-red-700 font-bold">{checkoutError}</p>}
+
+                <form onSubmit={handleConfirmOrder} className="space-y-3">
+                  <div>
+                    <label className="block font-semibold mb-1">পূর্ণ নাম *</label>
+                    <input type="text" required value={checkoutName} onChange={(e) => setCheckoutName(e.target.value)} placeholder="আপনার নাম" className="w-full border p-2.5 rounded-none" />
+                  </div>
+                  <div>
+                    <label className="block font-semibold mb-1">মোবাইল নম্বর *</label>
+                    <input type="tel" required value={checkoutPhone} onChange={(e) => setCheckoutPhone(e.target.value)} placeholder="01XXXXXXXXX" className="w-full border p-2.5 rounded-none font-mono" />
+                  </div>
+                  <div>
+                    <label className="block font-semibold mb-1">সম্পূর্ণ ঠিকানা *</label>
+                    <textarea rows="2" required value={checkoutAddress} onChange={(e) => setCheckoutAddress(e.target.value)} placeholder="বাসা/রোড, এলাকা, থানা, জেলা" className="w-full border p-2.5 rounded-none" />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <label className={`p-2 border flex items-center gap-2 cursor-pointer ${deliveryArea === 'inside' ? 'border-black bg-stone-50' : ''}`}>
+                      <input type="radio" checked={deliveryArea === 'inside'} onChange={() => setDeliveryArea('inside')} />
+                      <div>
+                        <strong>ঢাকার ভিতরে</strong>
+                        <span className="block text-[10px] text-stone-500">চার্জ: ৳৭০</span>
+                      </div>
+                    </label>
+                    <label className={`p-2 border flex items-center gap-2 cursor-pointer ${deliveryArea === 'outside' ? 'border-black bg-stone-50' : ''}`}>
+                      <input type="radio" checked={deliveryArea === 'outside'} onChange={() => setDeliveryArea('outside')} />
+                      <div>
+                        <strong>ঢাকার বাইরে</strong>
+                        <span className="block text-[10px] text-stone-500">চার্জ: ৳১৩০</span>
+                      </div>
+                    </label>
+                  </div>
+
+                  <button type="submit" className="w-full bg-black text-white font-bold py-3.5 text-xs uppercase tracking-widest rounded-none shadow active:scale-95">
+                    ✓ অর্ডার নিশ্চিত করুন
+                  </button>
+                </form>
+              </div>
+            </div>
+          )}
+
+          {/* Order Success Modal */}
+          {completedOrder && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 font-bangla">
+              <div className="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
+              <div className="relative bg-white max-w-md w-full shadow-2xl p-6 z-10 text-center text-xs">
+                <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3 text-xl font-bold">✓</div>
+                <h3 className="font-bold text-stone-900 text-base mb-1">আলহামদুলিল্লাহ! অর্ডার সফল হয়েছে</h3>
+                <p className="text-stone-500 mb-4">অর্ডার আইডি: <strong className="font-mono text-stone-900">#{completedOrder.orderId}</strong></p>
+                <div className="p-3 bg-stone-50 border text-left space-y-1 mb-4">
+                  <p><strong>গ্রাহক:</strong> {completedOrder.name}</p>
+                  <p><strong>মোবাইল:</strong> {completedOrder.phone}</p>
+                  <p className="font-bold text-stone-900 pt-1 border-t">মোট বিল: ৳{completedOrder.grandTotal.toLocaleString('bn-BD')}</p>
+                </div>
+                <button onClick={() => setCompletedOrder(null)} className="w-full bg-black text-white py-2.5 rounded-none font-bold uppercase tracking-wider">
+                  আরও কেনাকাটা করুন
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Floating Toast */}
+          {toast && (
+            <div className="fixed bottom-5 right-5 z-50 bg-black text-white text-xs py-3 px-4 shadow-2xl border-l-2 border-white">
+              ✓ {toast}
+            </div>
+          )}
+
+          {/* Footer */}
+          <footer className="bg-white text-stone-700 pt-16 pb-8 border-t border-stone-200">
+            <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-stone-200 text-left">
+                <div>
+                  <span className="font-brand text-3xl font-bold tracking-[0.2em] text-[#222429] uppercase block mb-1">ABHA</span>
+                  <span className="text-[8px] tracking-[0.25em] text-stone-400 font-semibold uppercase block mb-3">THE GLOW OF NEW TRENDS</span>
+                  <p className="text-xs text-stone-500 leading-relaxed font-bangla mb-4">আধুনিক আভিজাত্য ও ঐতিহ্যের মেলবন্ধন। খাঁটি সুন্নাহ ও প্রিমিয়াম লাইফস্টাইল।</p>
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-black mb-3">SHOP</h4>
+                  <ul className="space-y-2 text-xs text-stone-600 uppercase">
+                    <li><button onClick={navigateToHome} className="hover:text-black">All Products</button></li>
+                    <li><button onClick={() => navigateToCategoryPage('panjabi')} className="hover:text-black">Panjabi</button></li>
+                    <li><button onClick={() => navigateToCategoryPage('jubbah')} className="hover:text-black">Jubbah</button></li>
+                    <li><button onClick={() => navigateToCategoryPage('attar')} className="hover:text-black">Attar & Oud</button></li>
+                    <li><button onClick={() => navigateToCategoryPage('tshirt')} className="hover:text-black">T-Shirts</button></li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-black mb-3">COMPANY</h4>
+                  <ul className="space-y-2 text-xs text-stone-600 uppercase">
+                    <li><a href="#" className="hover:text-black">About Us</a></li>
+                    <li><a href="#" className="hover:text-black">Contact</a></li>
+                    <li><a href="#" className="hover:text-black">Shipping</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-black mb-3">HELP</h4>
+                  <ul className="space-y-2 text-xs text-stone-600 uppercase">
+                    <li><a href="#" className="hover:text-black">FAQs</a></li>
+                    <li><a href="#" className="hover:text-black">Track Order</a></li>
+                    <li><button onClick={() => setIsSizeAdvisorOpen(true)} className="hover:text-black">Size Guide</button></li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-black mb-3">NEWSLETTER</h4>
+                  <p className="text-xs text-stone-500 mb-3">নতুন কালেকশন ও অফার পেতে ইমেইল দিন।</p>
+                  <form onSubmit={(e) => { e.preventDefault(); alert('Subscribed to ABHA!'); }} className="flex">
+                    <input type="email" required placeholder="Enter email" className="w-full bg-stone-50 border border-stone-200 text-xs px-3 py-2 rounded-none outline-none focus:border-black" />
+                    <button type="submit" className="bg-black text-white px-3.5 py-2 text-xs font-bold">➔</button>
+                  </form>
+                </div>
+              </div>
+              <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
+                <p>© 2026 ABHA. The Glow of New Trends. All rights reserved.</p>
+                <p>Designed for the Modern Gentleman</p>
+              </div>
+            </div>
+          </footer>
+
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
 </body>
 </html>
